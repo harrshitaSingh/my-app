@@ -1,0 +1,479 @@
+// p{
+//   text-align: justify;
+//   text-justify: inter-word;
+// }
+
+.container{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 20px ;
+  gap: 40px;
+  // .divs-container{
+  //   margin-bottom: 25em;
+
+  // }
+  .release-date-info-header{
+    text-align: center;
+    font-size: small;
+  }
+  .divs-container:not(:last-child){
+    margin-bottom: 18em;
+  }
+
+
+.divs-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // padding: 20;
+  // gap: 40;
+  position: relative;
+  .heading-container{
+    width: 80%;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 5%;
+    margin-top: 20px;
+  .header{
+    padding-top: 0.75em;
+    // position: relative;
+      justify-content:center;
+      align-items: center;
+      font-weight: bold;
+      text-decoration: underline;
+      font-size: 28px;
+      margin-left: 20px;
+    }
+    .firmLogo{
+    flex-direction: column;
+    flex-direction: row;
+    width: 100px;
+    height: 100px;
+    border: 0.25px solid black;
+    border-radius: 50%;
+    margin-top: 0.75em;
+  
+    }
+  }
+.order-details-container{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    line-height: 2em;
+    // background-color: #f1f1f1;
+    border-radius: 10px;
+
+
+    .left-pan-container{
+      padding: 0.75em;
+      width: 50%;
+      .details{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+
+      }
+    }
+    .right-pan-container-order{
+      display: flex;
+      flex-direction: column;
+      padding: 0.75em;
+      padding-right: 5px;
+      justify-content: flex-start;
+      .details-order{
+        justify-content: space-between;
+        gap: 20px;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+      }
+    }
+    .right-pan-container{
+      display: flex;
+      flex-direction: column;
+      padding: 0.75em;
+      padding-right: 5px;
+      justify-content: center;
+      .details{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+      }
+    }
+
+  }
+  // .vendor-sign-btn{
+  //   background-color: #FFD34E;
+  //   color: black;
+  // }
+}
+
+}
+
+
+.vendor-sign-btn{
+  
+  padding: 0.5em;
+  width: 120px;
+  height: 30px;
+  background-color: #FFD34E;
+  color: black;
+  border: none;
+  border-radius: 5px ;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  &:hover{
+    cursor: pointer;
+  }
+
+}
+.vendor-sign-btn.sign-accept{
+  margin: 2em 0.5em;
+}
+
+.sign-modal-container{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 6px;
+.sign-modal-header{
+  margin: 0.75em;
+
+  .sign-modal-close-btn{
+    position:absolute;
+    right:0 ;
+    width: 45px;
+    height: 18px;
+    top:0.75em;
+    &:hover{
+      cursor: pointer;
+    } 
+  }
+}
+
+.sign-modal-canvaspad{
+  align-items: center;
+  margin: 0.5em;
+  border: solid 1px #D9D9D9;
+  width: 97%;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+}
+.sign-modal-btn-container{
+  margin: 0.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 70px;
+}
+
+#table1 {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#table1 td,
+#table1 th {
+  border: 0px solid #ddd;
+  padding: 8px;
+}
+
+#table1 tr {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#table1 tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#table1 tr:hover {
+  background-color: #ddd;
+}
+
+#table1 th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: "white";
+  color: black;
+  text-align: center;
+}
+
+
+.mobile-items-container{
+  margin-top: 20px;
+  width: 100%;
+.items-heading{
+  display: inline-flex;
+  width: 100%;
+  height: 41px;
+  background-color: #FFD34E;
+  align-items: center;
+  font-weight: bold;
+  color:#000000;
+  padding: 0.25em;
+  padding-left: 0.75em;
+  border-radius: 10px;
+}
+.mobile-item{
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  margin-top: 10px;
+  width: 100%;
+  padding: 0.75em;
+  line-height: 1.75em;
+
+  .mob-item-description{
+    width: 100%;
+    min-height: auto;
+    background-color: white;
+    border-radius: 10px;
+  }
+  .mob-item-image{
+    display: flex;
+    width: 100%;;
+    background-color: white;
+    border-radius: 10px;
+    height: auto;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+}
+.mobile-common-milestones{
+  width: 100%;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+
+}
+
+.common-milestones-container{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin-top: 20px;
+  .common-milestones-header{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: #fff6db;
+    padding: 10px;
+  }
+}
+.total-details{
+  width: 80%;
+}
+.terms-condition{
+  padding: 10px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding: 10;
+  background-color:white;
+  border-radius: 10px;
+  p{
+    text-align: justify;
+    text-justify: inter-word;
+    font-size: 15px;
+  }
+}
+
+.sign-container{
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.watermark{
+  position: absolute;
+  text-align: center;
+  margin-top: 5em;
+  font-size: 6em;
+  font-weight: bold;
+  color: red;
+  opacity: 0.3;
+  width: 100%;
+  text-transform: uppercase;
+  transform: rotateZ(-45deg); 
+  // border: 3px solid black;
+}
+
+
+.comment-decline-header{
+  display: flex;
+    justify-content: center;
+    margin: 0.75em 0;
+}
+.comment-decline-body{
+  display: flex;
+  margin: 1.4em;
+}
+.comment-decline-bottom{
+  display: flex;
+  justify-content: center;
+}
+.approval_container{
+  display: flex;
+  justify-content: space-between;
+  width:80%;
+}
+@media screen and (max-width: 550px) {
+  *{
+    font-size: 14px;
+
+  }
+  .container{
+    padding: 0%;
+    height: 100vh;
+    overflow-x: hidden;
+    background-color: white;
+
+
+  .divs-container{
+    display: flex;
+    flex-direction: column;
+
+
+    
+.heading-container{
+  width: 100%;
+  position: relative;
+  left: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+
+  .header{
+    left: 0;
+    font-size: 17px;
+    text-decoration-line: underline;
+    color: #000000;
+  }
+
+
+  .firmLogo{
+      width: 70px;
+    height: 70px;
+    margin-right: 20px ;
+    border: none;
+    }
+  }
+
+    .order-details-container{
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      // background-color: #f1f1f1;
+      border-radius: 10px;
+      gap: 20px;
+
+      .left-pan-container{
+        width: 40%;
+        .details{
+          display: flex;
+          flex-direction: column;
+        }
+        width: 42%;
+        padding: 0.75em;
+      }
+      .right-pan-container-order{
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        justify-content: flex-start;
+        .details-order{
+          gap: 0px;
+          display: flex;
+          flex-direction: column;
+        }
+      }
+      .right-pan-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .details{
+          display: flex;
+          flex-direction: column;
+        }
+
+      }
+
+
+    }
+    .common-milestones-container
+    {
+      width: 100%;
+      background-color: #f1f1f1;
+    }
+  
+
+
+
+    .terms-condition{
+      display: flex;
+      flex-direction: column;
+      padding: .75em;
+      width: 100%;
+      background-color: #f1f1f1;
+      border-radius: 10px;
+      p{
+        font-size: 15px;
+      }
+    }
+
+
+    .total-details{
+      width: 100%;
+
+    }
+  }
+
+
+}
+.sign-modal-container{
+  width: 100%;
+  height: 300px;
+.sign-modal-header{
+  margin: 0.75em;
+
+  .sign-modal-close-btn{
+    position:absolute;
+    right:0 ;
+    width: 45px;
+    height: 18px;
+    top:0.75em;
+    &:hover{
+      cursor: pointer;
+    } 
+  }
+}
+}
+.sign-container{
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2em;
+}
+
+.approval_container{
+  display: flex;
+  justify-content: space-between;
+  width: 92%;
+}
+}

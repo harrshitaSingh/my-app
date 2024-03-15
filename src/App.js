@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import poAPI from "../src/services/poService";
-// import "../src/table1.scss";
+import "../src/table1.scss";
 import firebaseApp from "../src/config/firebase";
 
 import POItem from "../src/POItem";
@@ -12,13 +12,21 @@ export default function PO() {
     "sdfsdfsfdsfdsfdsfdsfsdfdsfdsfdsfsdfdsf",
     window.my_special_setting
   );
-  const { pathname } = useLocation();
+  // const { pathname } = useLocation();
+
+  function getQueryParam(name) {
+    console.log("getQueryParam is MdCallEnd..");
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+  }
+
+  const pathname = getQueryParam("po_id");
 
   const [spinner, setSpinner] = useState(false);
   const [poData, setPoData] = useState([]);
   const [milestoneTobeAddedIndex, setMilestoneTobeAddedIndex] = useState([]);
   const [imageStates, setImageStates] = useState([]);
-    const [webAddress, setWebAddress] = useState("");
+  const [webAddress, setWebAddress] = useState("");
 
   var itemImageURLs = [];
   var orderIds = [];
@@ -31,9 +39,10 @@ export default function PO() {
 
   const getPoByOrderId = async () => {
     setSpinner(true);
-    console.log("pathname is " ,pathname)
-    let orderId = pathname.split("/")[1];
-    console.log('orderId', orderId);
+    console.log("pathname is ", pathname);
+    let orderId = pathname;
+    // let orderId = pathname.split("/")[1];
+    console.log("orderId", orderId);
 
     new poAPI()
       .getPoByOrderId(orderId)
@@ -44,7 +53,7 @@ export default function PO() {
           console.log("res.payload original : ", res.payload);
           projectId = res.payload[0].projectId;
           console.log("projectId : ", projectId);
-           setWebAddress(res.payload[0].webAddress); 
+          setWebAddress(res.payload[0].webAddress);
           let tempResPayload = JSON.parse(res.payload[0].discription);
           let tempMilestonesArray = [];
 
@@ -378,9 +387,8 @@ export default function PO() {
           console.log("projectId : ", projectId);
           console.log("orderIds : ", orderIds);
           await getURLsOfImageForPO();
-        }
-        else {
-           setPoData([]);
+        } else {
+          setPoData([]);
         }
 
         setSpinner(false);
@@ -491,7 +499,6 @@ export default function PO() {
           <p style={{ textAlign: "center", border: "2px solid red" }}>
             Po/Wo Not Available
           </p>
-          
         ) : (
           <POItem
             key="latest"

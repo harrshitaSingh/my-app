@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-// import "../src/table1.scss";
+import "../src/table1.scss";
 import { Dialog } from "@material-ui/core";
 import SignaturePad from "react-signature-canvas";
 import { MdClear } from "react-icons/md";
