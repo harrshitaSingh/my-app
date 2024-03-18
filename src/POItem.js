@@ -8,8 +8,8 @@ import config from "../src/config/config";
 import OpportunityService from "../src/services/opportunityService";
 import POService from "../src/services/poService";
 
-const POItem = ({ item, getPoByOrderId, imageStates }) => {
-  // const [imageStates, setImageStates] = useState([]);
+const POItem = ({ item, getPoByOrderId }) => {
+  const [imageStates, setImageStates] = useState([]);
   const [commenttoUpdate, setComment] = useState("");
   const [declineModal, setdeclineModal] = useState(false);
   console.log(
@@ -65,42 +65,42 @@ const POItem = ({ item, getPoByOrderId, imageStates }) => {
     JSON.parse(item?.OlderVersions) !== "null" &&
     JSON.parse(item?.OlderVersions) !== null &&
     JSON.parse(item?.OlderVersions);
-  // console.log('Oldrecek cer;sfjsf',olderverions)
-  // const uploadSignature = async (url) => {
-  //   // setIsLoading(true)
-  //   console.log("in the upload sign ", Date.now());
-  //   await fetch(`${config.poService}${item.Id}`, {
-  //     method: "PUT",
-  //     headers: {
-  //       Accept: "*/*",
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       vendorSignature: url,
-  //       VendorAcceptedDate: Date.now().toString(),
-  //     }),
-  //   })
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((json) => {
-  //       console.log("Response from uploadSignature API: ", json);
-  //       getPoByOrderId();
-  //       toast.success("PO Accepted Successfully", {
-  //         backgroundColor: "#2AC342",
-  //         color: "black",
-  //       });
-  //     })
-  //     .catch((e) => {
-  //       console.log("uploadSignature error: ", e.toString());
-  //       // e.toString().includes('Network request failed') ? setIsOnline(false) : (alert(e.toString()), setIsOnline(true))
-  //       // setIsLoading(false)
-  //       toast.error("Error Uploading Signature", {
-  //         backgroundColor: "#E72424",
-  //         color: "black",
-  //       });
-  //     });
-  // };
+  console.log('Oldrecek cer;sfjsf',olderverions)
+  const uploadSignature = async (url) => {
+    // setIsLoading(true)
+    console.log("in the upload sign ", Date.now());
+    await fetch(`${config.poService}${item.Id}`, {
+      method: "PUT",
+      headers: {
+        Accept: "*/*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        vendorSignature: url,
+        VendorAcceptedDate: Date.now().toString(),
+      }),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        console.log("Response from uploadSignature API: ", json);
+        getPoByOrderId();
+        toast.success("PO Accepted Successfully", {
+          backgroundColor: "#2AC342",
+          color: "black",
+        });
+      })
+      .catch((e) => {
+        console.log("uploadSignature error: ", e.toString());
+        // e.toString().includes('Network request failed') ? setIsOnline(false) : (alert(e.toString()), setIsOnline(true))
+        // setIsLoading(false)
+        toast.error("Error Uploading Signature", {
+          backgroundColor: "#E72424",
+          color: "black",
+        });
+      });
+  };
 
   const VendorAcceptedDate = (timestamp) => {
     let AcceptedDate = new Date(+timestamp);
@@ -133,12 +133,12 @@ const POItem = ({ item, getPoByOrderId, imageStates }) => {
   };
 
   const onSignSubmitHandler = async () => {
-    // await uploadSignature(signPad.getTrimmedCanvas().toDataURL());
-    //  setImageStates(true)
+    await uploadSignature(signPad.getTrimmedCanvas().toDataURL());
+     setImageStates(true)
     //  await sleep(2000)
 
     onCloseModalHandler();
-    //  setImageStates(false)
+     setImageStates(false)
     // console.log('poData',poData,"ID",poData[0].Id)
   };
 

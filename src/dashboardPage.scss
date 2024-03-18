@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+#DashboardPage {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  flex: 1;
+
+  #dpmain {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 60px;
+    gap: 20px;
+
+    #dpmHeading {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      #dpmhTitle {
+        font-weight: 600;
+        font-size: x-large;
+        color: #353535;
+        font-family: "Montserrat", sans-serif;
+        text-decoration: underline;
+        text-decoration-color: #fdd34d;
+      }
+    }
+
+    #dpmFilterArea {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      #dpmFilter {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+      }
+    }
+
+    #projectsHeader {
+      height: 45px;
+      background-color: var(--staart-yellow);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: small;
+      font-weight: 600;
+      justify-content: space-between;
+
+      // width: fit-content;
+      > :nth-child(n) {
+        flex: 1;
+        text-align: center;
+      }
+    }
+
+    ::-webkit-scrollbar {
+      width: 0px;
+    }
+
+    #projectsRow {
+      flex: 1;
+      overflow-y: scroll;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    #projectsPagination {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+.activeItem {
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.headerBtnsContainer {
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  div {
+    width: 40%;
+  }
+}
+
+// try our apps Classes
+.appsContainer {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+.LinkedApps {
+  width: 60%;
+}
+
+.FreemiumAppsContainer,
+.LinkedAppsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-bottom: 2em;
+}
+.FreemiumAppsContainer {
+  width: 40%;
+  background-color: var(--staart-yellow);
+}
+.LinkedAppsContainer {
+  width: 60%;
+}
+.app-features-container {
+  padding-top: 2em;
+}
+.FreemiumApps {
+  // width: 40%;
+  // background-color: var(--staart-yellow);
+}
+
+.apps-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

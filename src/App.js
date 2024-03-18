@@ -4,6 +4,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import poAPI from "../src/services/poService";
 import "../src/table1.scss";
 import firebaseApp from "../src/config/firebase";
+import "../src/dashboardPage.scss"
 
 import POItem from "../src/POItem";
 
@@ -21,6 +22,7 @@ export default function PO() {
   }
 
   const pathname = getQueryParam("po_id");
+
 
   const [spinner, setSpinner] = useState(false);
   const [poData, setPoData] = useState([]);
