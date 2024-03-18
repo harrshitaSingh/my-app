@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap");
+
+:root {
+  --staart-yellow: #fdd34d;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif !important;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparant;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #7e7e7e;
+    border-radius: 10px;
+  }
+  // &::-webkit-scrollbar-thumb:hover {
+  //   background: #969696;
+  // }
+  scrollbar-color: #e7e7e7 transparant;
+  scrollbar-width: thin;
+}
+
+// html
+// {
+//     font-size: 62.5%;
+// }
+
+// html
+// {
+//     @media only screen and(max-width: 1376px)
+//     {
+//         zoom: 80%;
+//     }
+// }
+
+// #section-to-print, #section-to-print * {
+//     visibility: visible;
+//     overflow: visible;
+// }
+
+// #scrollable-div
+// {
+//     width: 100%;
+//     height: 100%;
+// }
+
+// #section-to-print {
+//     display: block;
+//     width: auto;
+//     height: auto;
+//     overflow: visible;
+// }
+
+// #overflow-print
+// {
+//     overflow: auto !important;
+// }
+
+// @media only print
+// {
+//     body * {
+//         visibility: hidden;
+//     }
+
+//     #section-to-print, #section-to-print * {
+//         visibility: visible;
+//         overflow: visible;
+//     }
+
+//     #scrollable-div
+//     {
+//         width: 100%;
+//         height: 100%;
+//     }
+
+//     #section-to-print {
+//         // display: block;
+//         width: auto;
+//         height: auto;
+//         overflow: visible;
+//         transform: scale(1.2) translateY(-550px);
+//     }
+
+//     #overflow-print
+//     {
+//         overflow: visible !important;
+//     }
+
+//     #po-print-titlebar
+//     {
+//         visibility: hidden;
+//     }
+// }

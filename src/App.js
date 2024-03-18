@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import poAPI from "../src/services/poService";
 import "../src/table1.scss";
+import "./App.scss"
 import firebaseApp from "../src/config/firebase";
 import "../src/dashboardPage.scss"
 
