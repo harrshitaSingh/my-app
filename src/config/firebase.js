@@ -1,9 +1,6 @@
-import React, { useEffect } from "react";
-import { initializeApp } from "firebase/app";
-import { getMessaging } from "firebase/messaging";
-import { getAnalytics } from "firebase/analytics";
-
-import { environment } from "../config/config";
+import firebase from "firebase";
+import { getMessaging, getToken, onMessage } from "firebase/messaging";
+import { environment } from "./config";
 
 let firebaseConfig = {};
 
@@ -30,9 +27,20 @@ if (environment === "production") {
 }
 
 // Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig);
-const analytics = getAnalytics(firebaseApp);
-const messaging = getMessaging(firebaseApp);
+firebase.initializeApp(firebaseConfig);
+export const analytics = firebase.analytics();
+export const messaging = firebase.messaging();
+// console.log("MESSAGING", messaging);
+// messaging.getToken().then((res) => console.log("TOKEN OF TEH DEVICE", res));
 
-export default firebaseApp;
-export { analytics, messaging };
+// const messaging = getMessaging(firebase);
+//......
+
+export const onMessageListener = () =>
+  new Promise((resolve) => {
+    messaging.onMessage(messaging, (payload) => {
+      // console.log("payload", payload);
+      resolve(payload);
+    });
+  });
+export default firebase;

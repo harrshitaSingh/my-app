@@ -5,7 +5,7 @@ import poAPI from "../src/services/poService";
 import "../src/table1.scss";
 import "./App.scss"
 import "../src/table2.scss";
-import firebaseApp from "../src/config/firebase";
+import firebase from "../src/config/firebase"
 import "../src/dashboardPage.scss"
 
 import POItem from "../src/POItem";
@@ -35,7 +35,7 @@ export default function PO() {
   var itemImageURLs = [];
   var orderIds = [];
   var projectId = null;
-  // var database = firebaseApp.database();
+  var database = firebase.database();
 
   useEffect(() => {
     getPoByOrderId();
@@ -407,7 +407,8 @@ export default function PO() {
     // writ th cod hr
     let emptyURL = null;
     itemImageURLs = [];
-    var useRef = firebaseApp.database.ref(`POImages/${projectId}`);
+    var useRef = database.ref(`POImages/${projectId}`);
+    console.log("this is the image", useRef)
 
     useRef
       .once("value", function (snapshot) {
