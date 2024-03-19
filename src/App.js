@@ -4,6 +4,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import poAPI from "../src/services/poService";
 import "../src/table1.scss";
 import "./App.scss"
+import "../src/table2.scss";
 import firebaseApp from "../src/config/firebase";
 import "../src/dashboardPage.scss"
 
@@ -45,7 +46,7 @@ export default function PO() {
     console.log("pathname is ", pathname);
     let orderId = pathname;
     // let orderId = pathname.split("/")[1];
-    console.log("orderId", orderId);
+    console.log("orderId hhhhh", orderId);
 
     new poAPI()
       .getPoByOrderId(orderId)

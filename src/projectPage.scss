@@ -1,0 +1,389 @@
+#content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-x: hidden;
+  > :nth-child(1) {
+    min-height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    > div {
+      > div:nth-child(1) {
+        // padding: 10px 45px;
+        // font-size: small;
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
+        // justify-content: center;
+        // gap: 5px;
+        cursor: pointer;
+        // > :nth-child(1) {
+        // font-weight: bold;
+        // }
+      }
+      .boqTab {
+        background-color: #f6f6f6;
+        color: #353535;
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+      .indentTab {
+        background-color: var(--staart-yellow);
+        color: #353535;
+        &:hover {
+          cursor: pointer;
+          opacity: 0.6;
+        }
+      }
+      .active {
+        height: 5px;
+        background-color: rgb(255, 211, 77);
+        margin: 5px 0px;
+        border-radius: 2px;
+      }
+    }
+  }
+  > .boqPage {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    width: 95%;
+    height: 90%;
+    position: fixed;
+    // overflow-y: hidden;
+    // top: 50;
+    margin: 80px 10px;
+    > div {
+      margin: 10px 0px;
+      display: flex;
+      flex-direction: column;
+      background-color: rgb(238, 238, 238);
+      overflow-y: hidden;
+      > :nth-child(1) {
+        min-height: 50px;
+        background-color: #2f4858;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-weight: 600;
+        font-size: small;
+      }
+      > :nth-child(2) {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        position: sticky;
+      }
+    }
+    // items - units sectiion
+    > :nth-child(1) {
+      position: relative;
+      > :nth-child(2) {
+        > div {
+          > :nth-child(1) {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            align-items: center;
+            padding: 0px 10px;
+            height: 40px;
+            background-color: rgb(208, 208, 208);
+            > :nth-child(1) {
+              font-size: small;
+              flex-grow: 1;
+            }
+          }
+          > :nth-child(2) {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px;
+            > div {
+              position: relative;
+              display: flex;
+              flex-direction: column;
+              background-color: rgb(245, 245, 245);
+              padding: 10px;
+              gap: 10px;
+              > :nth-child(1) {
+                display: flex;
+                justify-content: space-between;
+                > :nth-child(1) {
+                  font-size: small;
+                }
+              }
+              > :nth-child(2) {
+                font-size: small;
+              }
+            }
+          }
+        }
+      }
+    }
+    //components - description sectiion
+    > :nth-child(2) {
+      position: relative;
+      // header
+      > :nth-child(1)::before {
+        content: "";
+        height: 35px;
+        width: 35px;
+        border-right-color: white;
+        border-bottom-color: white;
+        border-right-width: 3px;
+        border-bottom-width: 3px;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        position: absolute;
+        left: -20px;
+        transform: rotate(-45deg);
+      }
+      > :nth-child(2) {
+        border-width: 0px;
+        border-color: white;
+        border-left-width: 3px;
+        border-right-width: 3px;
+        border-style: solid;
+        > div {
+          > .heading {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            align-items: center;
+            padding: 0px 10px;
+            height: 40px;
+            background-color: rgb(208, 208, 208);
+            > :nth-child(1) {
+              font-size: small;
+              flex-grow: 1;
+            }
+          }
+          > .components {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-top: 10px;
+            > .component {
+              display: flex;
+              flex-direction: column;
+              background-color: rgb(245, 245, 245);
+              margin: 0px 10px;
+              padding: 10px;
+              gap: 20px;
+              > :nth-child(1) {
+                display: flex;
+                justify-content: space-between;
+                > :nth-child(1) {
+                  font-size: small;
+                }
+              }
+              > :nth-child(2) {
+                font-size: small;
+              }
+              > :nth-child(3) {
+                display: flex;
+                justify-content: space-between;
+                gap: 10px;
+                > :nth-child(n) {
+                  font-size: small;
+                }
+              }
+              > :nth-child(4) {
+                display: flex;
+                justify-content: space-between;
+                cursor: pointer;
+                font-weight: 700;
+                align-items: center;
+                > :nth-child(1) {
+                  font-size: small;
+                }
+                > :nth-child(2) {
+                  display: flex;
+                  gap: 2px;
+                  align-items: center;
+                  > :nth-child(1) {
+                    font-size: 20;
+                  }
+                }
+                > :nth-child(3) {
+                  color: #275571;
+                  font-size: 12px;
+                }
+              }
+            }
+          }
+          > .drawings {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: small;
+          }
+        }
+      }
+    }
+    //work and material sectiion
+    > :nth-child(3) {
+      position: relative;
+
+      // heading
+      > :nth-child(1) {
+        background-color: rgb(213, 213, 213);
+        color: #2f4858;
+        &::before {
+          content: "";
+          height: 34px;
+          width: 34px;
+          border-right-color: #2f4858;
+          border-bottom-color: #2f4858;
+          border-right-width: 3px;
+          border-bottom-width: 3px;
+          border-right-style: solid;
+          border-bottom-style: solid;
+          position: absolute;
+          left: -20px;
+          transform: rotate(-45deg);
+          background-color: #2f4858;
+        }
+      }
+      > :nth-child(2) {
+        overflow-y: auto;
+        > div {
+          display: flex;
+          flex-direction: column;
+          > .heading {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            align-items: center;
+            padding: 0px 10px;
+            min-height: 40px;
+            background-color: rgb(255, 211, 77);
+            > :nth-child(-n + 2) {
+              font-size: small;
+              flex-grow: 1;
+            }
+          }
+          > .workmaterials {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px;
+            > .workmaterial {
+              display: flex;
+              flex-direction: column;
+              background-color: rgb(245, 245, 245);
+              padding: 10px;
+              gap: 20px;
+              > :nth-child(1) {
+                display: flex;
+                justify-content: space-between;
+                > :nth-child(1) {
+                  font-size: small;
+                }
+              }
+              > :nth-child(2) {
+                font-size: small;
+                padding-right: 10px;
+              }
+              > :nth-child(3) {
+                font-size: small;
+              }
+              > :nth-child(4) {
+                display: flex;
+                justify-content: space-between;
+                gap: 10px;
+                > :nth-child(n) {
+                  font-size: small;
+                }
+              }
+              > :nth-child(5) {
+                display: flex;
+                justify-content: space-between;
+                font-size: small;
+                > :nth-child(1) {
+                  font-weight: 700;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .menuItem {
+      color: rgb(27, 27, 27);
+      &:hover {
+        color: rgb(198, 198, 198);
+        text-decoration: underline;
+      }
+    }
+  }
+  .menuItem {
+    color: rgb(27, 27, 27);
+    &:hover {
+      color: rgb(198, 198, 198);
+      text-decoration: underline;
+    }
+  }
+}
+
+.clientName {
+  min-width: 497px;
+  color: #2f4858;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-right: 5px;
+  margin-left: 10px;
+}
+
+.tabs-container {
+  display: flex;
+  flex-direction: row;
+  font-size: small;
+
+  .boqTab {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 40px;
+  }
+  .indentTab {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 40px;
+  }
+}
+.search-container {
+  padding: 8px 5px;
+  display: flex;
+  flex-direction: row;
+  max-width: 600px;
+  flex-grow: 3;
+  padding-left: 10px;
+  .search-field {
+    flex-grow: 2;
+  }
+  .search-filter {
+    flex-grow: 0.5;
+  }
+  .MuiAutocomplete-endAdornment {
+    // this is to keep the dropdown icon in the middle
+    top: 0;
+  }
+}
+.FiChevron {
+  &:hover {
+    cursor: pointer;
+  }
+}
