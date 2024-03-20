@@ -495,8 +495,8 @@ const getURLsOfImageForPO = async () => {
     <div className="container">
       {poData ? (
         poData.length < 1 ? (
-          <p style={{ textAlign: "center", border: "2px solid red" }}>
-            Po/Wo Not Available
+          <p style={{ textAlign: "center"}}>
+  
           </p>
         ) : (
           <POItem
@@ -508,8 +508,8 @@ const getURLsOfImageForPO = async () => {
           />
         )
       ) : (
-        <p style={{ textAlign: "center", border: "2px solid blue" }}>
-          Po/Wo Not Available
+        <p style={{ textAlign: "center"}}>
+   
         </p>
       )}
     </div>
