@@ -1166,7 +1166,7 @@ export default function PO() {
     <div className="container">
       {poData ? (
         poData.length < 1 ? (
-          <p style={{ textAlign: "center" }}>Po/Wo Not Available</p>
+          <p style={{ textAlign: "center" }}></p>
         ) : (
           <POItem
             key="latest"
