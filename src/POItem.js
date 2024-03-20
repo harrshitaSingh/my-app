@@ -9,8 +9,8 @@
 // import OpportunityService from "../src/services/opportunityService";
 // import POService from "../src/services/poService";
 
-// const POItem = ({ item, getPoByOrderId }) => {
-//   const [imageStates, setImageStates] = useState([]);
+// const POItem = ({ item, getPoByOrderId , imageStates}) => {
+//   // const [imageStates, setImageStates] = useState([]);
 //   const [commenttoUpdate, setComment] = useState("");
 //   const [declineModal, setdeclineModal] = useState(false);
 //   console.log(
@@ -135,11 +135,11 @@
 
 //   const onSignSubmitHandler = async () => {
 //     await uploadSignature(signPad.getTrimmedCanvas().toDataURL());
-//     setImageStates(true);
+//     // setImageStates(true);
 //     //  await sleep(2000)
 
 //     onCloseModalHandler();
-//     setImageStates(false);
+//     // setImageStates(false);
 //     // console.log('poData',poData,"ID",poData[0].Id)
 //   };
 
@@ -2197,6 +2197,8 @@ const POItem = ({
     JSON.parse(item?.OlderVersions) !== null &&
     JSON.parse(item?.OlderVersions);
   // console.log('Oldrecek cer;sfjsf',olderverions)
+
+
   const uploadSignature = async (url) => {
     // setIsLoading(true)
     console.log("in the upload sign ", Date.now());
