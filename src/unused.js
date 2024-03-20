@@ -9,8 +9,8 @@ import config from "../src/config/config";
 import OpportunityService from "../src/services/opportunityService";
 import POService from "../src/services/poService";
 
-const POItem = ({ item, getPoByOrderId }) => {
-  const [imageStates, setImageStates] = useState([]);
+const POItem = ({ item, getPoByOrderId, imageStates }) => {
+  // const [imageStates, setImageStates] = useState([]);
   const [commenttoUpdate, setComment] = useState("");
   const [declineModal, setdeclineModal] = useState(false);
   console.log(
@@ -135,11 +135,11 @@ const POItem = ({ item, getPoByOrderId }) => {
 
   const onSignSubmitHandler = async () => {
     await uploadSignature(signPad.getTrimmedCanvas().toDataURL());
-    setImageStates(true);
+    // setImageStates(true);
     //  await sleep(2000)
 
     onCloseModalHandler();
-    setImageStates(false);
+    // setImageStates(false);
     // console.log('poData',poData,"ID",poData[0].Id)
   };
 
@@ -398,27 +398,10 @@ const POItem = ({ item, getPoByOrderId }) => {
                     JSON.parse(item.discription).map((item, index) => {
                       if (index == milestoneTobeAddedIndex[orderNo]) {
                         // write the code here
-                        console.log("here i am ", imageStates[index]);
-                        console.log(
-                          "here is the order no",
-                          milestoneTobeAddedIndex[orderNo]
-                        );
                         orderNo = orderNo + 1;
-
-                        console.log("the order number is", orderNo);
                       } else {
                         // write the code here
                         commonMilestonesIndex = index;
-
-                        console.log(
-                          "this is the milestone index",
-                          commonMilestonesIndex
-                        );
-
-                        console.log(
-                          "here is the image coming but not the url",
-                          imageStates[index]
-                        );
 
                         return (
                           <tr
@@ -542,10 +525,9 @@ const POItem = ({ item, getPoByOrderId }) => {
 
                             {/* { imageStates[index] != null ? */}
                             <td>
-                              {!imageStates || imageStates[index] != null ? (
+                              {!imageStates || imageStates[index] == null ? (
                                 <p>-</p>
                               ) : (
-                                // eslint-disable-next-line jsx-a11y/img-redundant-alt
                                 <img
                                   style={{
                                     width: "150px",
@@ -553,7 +535,7 @@ const POItem = ({ item, getPoByOrderId }) => {
                                     objectFit: "contain",
                                   }}
                                   src={imageStates[index]}
-                                  // alt="Image Not uploaded"
+                                  alt="Image Not uploaded"
                                 />
                               )}
                             </td>
@@ -967,11 +949,14 @@ const POItem = ({ item, getPoByOrderId }) => {
                   {console.log(
                     "milestoneTobeAddedIndex : ",
                     milestoneTobeAddedIndex
-                  )}{
-                    console.log('milestoneTobeAddedIndex[orderNo]')
-                  }
+                  )}
+                  {console.log(
+                    "milestoneTobeAddedIndex[orderNo] : ",
+                    milestoneTobeAddedIndex[orderNo]
+                  )}
                   {item.discription &&
                     JSON.parse(item.discription).map((item, index) => {
+                      console.log("index : ", index);
                       if (index == milestoneTobeAddedIndex[orderNo]) {
                         // write the code here
                         orderNo = orderNo + 1;
