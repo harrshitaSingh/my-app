@@ -9,7 +9,7 @@
 // import OpportunityService from "../src/services/opportunityService";
 // import POService from "../src/services/poService";
 
-// const POItem = ({ item, getPoByOrderId , imageStates}) => {
+// const POItem = ({ item, getPoByOrderId ,imageStates}) => {
 //   // const [imageStates, setImageStates] = useState([]);
 //   const [commenttoUpdate, setComment] = useState("");
 //   const [declineModal, setdeclineModal] = useState(false);
@@ -2292,13 +2292,7 @@ const POItem = ({
       {item && (
         <>
           <p className="release-date-info-header">
-            {item.poDate
-              .toString()
-              .substring(0, 10)
-              .split("-")
-              .reverse()
-              .join(" / ")}
-            - {item.poDate.substring(11, 19)}
+       {new Date(item.poDate).toLocaleDateString("en-GB")}-{" "}          {new Date(item.poDate).toLocaleTimeString()}
           </p>
           <div
             style={{
