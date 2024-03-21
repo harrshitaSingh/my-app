@@ -2077,8 +2077,6 @@
 
 // export default POItem;
 
-
-
 import { useEffect, useState } from "react";
 import "../src/table1.scss";
 import "../src/table2.scss";
@@ -2089,7 +2087,6 @@ import { toast } from "react-toast";
 import config from "../src/config/config";
 import OpportunityService from "../src/services/opportunityService";
 import POService from "../src/services/poService";
-
 
 const POItem = ({
   item,
@@ -2288,14 +2285,10 @@ const POItem = ({
       {item && (
         <>
           <p className="release-date-info-header">
-            {item.poDate
-              .toString()
-              .substring(0, 10)
-              .split("-")
-              .reverse()
-              .join(" / ")}
-            - {item.poDate.substring(11, 19)}
+            {new Date().toLocaleDateString("en-GB")} -{" "}
+            {new Date().toLocaleTimeString()}
           </p>
+
           <div
             style={{
               opacity: JSON.parse(item.AmendmentDetails)?.isUnreleased
