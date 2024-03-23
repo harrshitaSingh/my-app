@@ -2285,8 +2285,8 @@ const POItem = ({
       {item && (
         <>
           <p className="release-date-info-header">
-            {new Date().toLocaleDateString("en-GB")} -{" "}
-            {new Date().toLocaleTimeString()}
+            {new Date(item.poDate).toLocaleDateString("en-GB")}-{" "}
+           {new Date(item.poDate).toLocaleTimeString()}
           </p>
 
           <div

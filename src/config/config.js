@@ -1,5 +1,5 @@
-export const environment = "production";
-// export const environment = "staging";
+// export const environment = "production";
+export const environment = "staging";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
