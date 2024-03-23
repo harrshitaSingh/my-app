@@ -496,7 +496,7 @@ const getURLsOfImageForPO = async () => {
       {poData ? (
         poData.length < 1 ? (
           <p style={{ textAlign: "center"}}>
-  hello 2
+
           </p>
         ) : (
           <POItem
@@ -504,12 +504,13 @@ const getURLsOfImageForPO = async () => {
             item={poData[0]}
             getPoByOrderId={getPoByOrderId}
             imageStates={imageStates}
-            setPoData={setPoData}
+                setPoData={setPoData}
+                
           />
         )
       ) : (
         <p style={{ textAlign: "center"}}>
-   hello
+
         </p>
       )}
     </div>
