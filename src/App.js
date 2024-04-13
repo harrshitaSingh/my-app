@@ -31,10 +31,15 @@ export default function PO() {
   const [milestoneTobeAddedIndex, setMilestoneTobeAddedIndex] = useState([]);
   const [imageStates, setImageStates] = useState([]);
   const [webAddress, setWebAddress] = useState("");
+  const [poReqMilestone, setPoReqMilestone] = useState([]);
+  const [lastObjectState, setLastObjectState] = useState(null);
 
   var itemImageURLs = [];
   var orderIds = [];
   var projectId = null;
+  var poId = null;
+  var requestId = null;
+
   // var database = firebase.database();
 
   useEffect(() => {
@@ -56,6 +61,9 @@ export default function PO() {
         if (res.status === 200 && res.payload.length > 0) {
           console.log("res.payload original : ", res.payload);
           projectId = res.payload[0].projectId;
+          poId = res.payload[0].OrderId;
+          console.log("po id for request is", poId);
+
           console.log("projectId : ", projectId);
           setWebAddress(res.payload[0].webAddress);
           let tempResPayload = JSON.parse(res.payload[0].discription);
@@ -391,6 +399,7 @@ export default function PO() {
           console.log("projectId : ", projectId);
           console.log("orderIds : ", orderIds);
           getURLsOfImageForPO();
+          getPoMilestones();
         } else {
           setPoData([]);
         }
@@ -403,38 +412,64 @@ export default function PO() {
       });
   };
 
-const getURLsOfImageForPO = async () => {
-  console.log("Fetching image URLs...");
-  let emptyURL = null;
-  itemImageURLs = [];
+  const getURLsOfImageForPO = async () => {
+    console.log("Fetching image URLs...");
+    let emptyURL = null;
+    itemImageURLs = [];
 
-  try {
-    const db = getDatabase(firebaseApp);
-    const snapshot = await get(ref(db, `POImages/${projectId}`));
-    console.log("Snapshot:", snapshot.val()); // Log snapshot value
-    const data = snapshot.val();
+    try {
+      const db = getDatabase(firebaseApp);
+      const snapshot = await get(ref(db, `POImages/${projectId}`));
+      console.log("Snapshot:", snapshot.val()); // Log snapshot value
+      const data = snapshot.val();
 
-    console.log("hello data", data)
+      console.log("hello data", data);
 
-    if (data == null) {
-      for (let index = 0; index < orderIds.length; index++) {
-        itemImageURLs.push(emptyURL);
-      }
-    } else {
-      for (let index = 0; index < orderIds.length; index++) {
-        if (data[orderIds[index]]) {
-          itemImageURLs.push(data[orderIds[index]].url);
-        } else {
+      if (data == null) {
+        for (let index = 0; index < orderIds.length; index++) {
           itemImageURLs.push(emptyURL);
         }
+      } else {
+        for (let index = 0; index < orderIds.length; index++) {
+          if (data[orderIds[index]]) {
+            itemImageURLs.push(data[orderIds[index]].url);
+          } else {
+            itemImageURLs.push(emptyURL);
+          }
+        }
       }
+      console.log("Image URLs fetched successfully:", itemImageURLs); // Log itemImageURLs
+      setImageStates(itemImageURLs);
+    } catch (error) {
+      console.log("Error retrieving image URLs:", error);
     }
-    console.log("Image URLs fetched successfully:", itemImageURLs); // Log itemImageURLs
-    setImageStates(itemImageURLs);
-  } catch (error) {
-    console.log("Error retrieving image URLs:", error);
-  }
-};
+  };
+
+  const getPoMilestones = async () => {
+    let requestPO = [];
+    let lastObject = null;
+
+    try {
+      const db = getDatabase(firebaseApp);
+      const snapshot = await get(ref(db, `poRequests/${poId}`));
+      const data = snapshot.val();
+      console.log("this is the data value", data);
+
+      if (data != null) {
+        const values = Object.values(data);
+        console.log(values, "values are");
+        values.slice(0, -1).map((value) => {
+          requestPO = [...requestPO, value];
+        });
+        lastObject = values[values.length - 1];
+        setLastObjectState(lastObject);
+        setPoReqMilestone(requestPO);
+      }
+    } catch (error) {
+      console.log("error in getting PO milestones");
+    }
+  };
+
   const checkMilestonesToBeEqaul = (obj1, obj2) => {
     let tempComp = true;
     if (obj1.length === obj2.length) {
@@ -475,10 +510,6 @@ const getURLsOfImageForPO = async () => {
     return maxEl;
   };
 
-  // var orderNo = 0;
-  // var commonMilestonesIndex = 0;
-  // var commonMilestoneAmount = 0;
-  // let sNo = 0;
   return spinner ? (
     <div
       style={{
@@ -495,23 +526,20 @@ const getURLsOfImageForPO = async () => {
     <div className="container">
       {poData ? (
         poData.length < 1 ? (
-          <p style={{ textAlign: "center"}}>
-
-          </p>
+          <p style={{ textAlign: "center" }}></p>
         ) : (
           <POItem
             key="latest"
             item={poData[0]}
             getPoByOrderId={getPoByOrderId}
             imageStates={imageStates}
-                setPoData={setPoData}
-                
+            setPoData={setPoData}
+            poReqMilestone={poReqMilestone}
+            lastObjectState={lastObjectState}
           />
         )
       ) : (
-        <p style={{ textAlign: "center"}}>
-
-        </p>
+        <p style={{ textAlign: "center" }}></p>
       )}
     </div>
   );

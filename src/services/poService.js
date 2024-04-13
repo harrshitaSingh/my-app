@@ -1,4 +1,4 @@
-import config from "../config/config.js";
+import config from "../config/config";
 
 class POService {
   async releasePO(
@@ -42,7 +42,8 @@ class POService {
     insurance,
     paymentTerms,
     orderType,
-    attachments
+    attachments,
+    bankAccountDetails
   ) {
     try {
       const response = await (
@@ -94,6 +95,7 @@ class POService {
             paymentTerms,
             orderType,
             attachments,
+            bankAccountDetails,
           }),
         })
       ).json();
