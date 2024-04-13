@@ -244,7 +244,6 @@ const POItem = ({
                 </div>
               </div>
             </div>
-
             <div
               className="order-details-container"
               style={{ background: "#f1f1f1" }}
@@ -744,7 +743,6 @@ const POItem = ({
                 </div>
               </div>
             )}
-
             <div className="common-milestones-container">
               <div className="common-milestones-header">
                 <div
@@ -899,119 +897,124 @@ const POItem = ({
                     </div>
                   ))}
             </div>
-
             <br></br>
-
-            <div
-              className="order-details-container"
-              style={{ background: "#f1f1f1" }}
-            >
-              <div className="left-pan-container">
-                <p style={{ fontWeight: "bold" }}>Bank Details</p>
-
-                <div className="details">
-                  <p style={{ fontWeight: "bold" }}>Vendor Firm:&nbsp; </p>
-                  <p>
-                    {item.vendorFirm == null || item.vendorFirm == "null"
-                      ? "-"
-                      : item.vendorFirm}
-                  </p>
-                </div>
-                <div className="details">
-                  <p style={{ fontWeight: "bold" }}>
-                    Account Holder Name:&nbsp;{" "}
-                  </p>
-                  {item?.bankDetails ? (
-                    <div>
-                      <p>
-                        {(() => {
-                          try {
-                            return JSON.parse(item.bankDetails)
-                              .AccountHolderName;
-                          } catch (error) {
-                            return "-";
-                          }
-                        })()}
-                      </p>
-                    </div>
-                  ) : null}
-                </div>
-                <div className="details">
-                  <p style={{ fontWeight: "bold" }}>Account Number:&nbsp;</p>
-                  {item?.bankDetails ? (
-                    <div>
-                      <p>
-                        {(() => {
-                          try {
-                            return JSON.parse(item.bankDetails).AccountNumber;
-                          } catch (error) {
-                            return "-";
-                          }
-                        })()}
-                      </p>
-                    </div>
-                  ) : null}
-                </div>
-              </div>
-
+            {item.bankDetails ? (
               <div
-                className="right-pan-container"
-                style={{ justifyContent: "flex-start", paddingTop: "46px" }}
+                className="order-details-container"
+                style={{ background: "#f1f1f1" }}
               >
-                <div className="details">
-                  <p style={{ fontWeight: "bold" }}>IFSC Code: &nbsp; </p>
-                  {item?.bankDetails ? (
-                    <div>
-                      <p>
-                        {(() => {
-                          try {
-                            return JSON.parse(item.bankDetails).IFSC;
-                          } catch (error) {
-                            return "-";
-                          }
-                        })()}
-                      </p>
-                    </div>
-                  ) : null}
-                </div>
-                <div className="details">
-                  <p style={{ fontWeight: "bold" }}>PAN Number: &nbsp; </p>
-                  {item?.bankDetails ? (
-                    <div>
-                      <p>
-                        {(() => {
-                          try {
-                            return JSON.parse(item.bankDetails).PAN;
-                          } catch (error) {
-                            return "-";
-                          }
-                        })()}
-                      </p>
-                    </div>
-                  ) : null}
+                <div className="left-pan-container">
+                  <p style={{ fontWeight: "bold" }}>Bank Details</p>
+
+                  <div className="details">
+                    <p style={{ fontWeight: "bold" }}>Vendor Firm:&nbsp; </p>
+                    <p>
+                      {item.vendorFirm == null || item.vendorFirm == "null"
+                        ? "-"
+                        : item.vendorFirm}
+                    </p>
+                  </div>
+                  <div className="details">
+                    <p style={{ fontWeight: "bold" }}>
+                      Account Holder Name:&nbsp;{" "}
+                    </p>
+                    {item?.bankDetails ? (
+                      <div>
+                        <p>
+                          {(() => {
+                            try {
+                              return JSON.parse(item.bankDetails)
+                                .AccountHolderName;
+                            } catch (error) {
+                              return "-";
+                            }
+                          })()}
+                        </p>
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="details">
+                    <p style={{ fontWeight: "bold" }}>Account Number:&nbsp;</p>
+                    {item?.bankDetails ? (
+                      <div>
+                        <p>
+                          {(() => {
+                            try {
+                              return JSON.parse(item.bankDetails).AccountNumber;
+                            } catch (error) {
+                              return "-";
+                            }
+                          })()}
+                        </p>
+                      </div>
+                    ) : null}
+                  </div>
                 </div>
 
-                <div className="details">
-                  <p style={{ fontWeight: "bold" }}>GSTIN: &nbsp; </p>
-                  {item?.bankDetails ? (
-                    <div>
-                      <p>
-                        {(() => {
-                          try {
-                            return JSON.parse(item.bankDetails).GSTIN;
-                          } catch (error) {
-                            return "-";
-                          }
-                        })()}
-                      </p>
-                    </div>
-                  ) : null}
+                <div
+                  className="right-pan-container"
+                  style={{ justifyContent: "flex-start", paddingTop: "46px" }}
+                >
+                  <div className="details">
+                    <p style={{ fontWeight: "bold" }}>IFSC Code: &nbsp; </p>
+                    {item?.bankDetails ? (
+                      <div>
+                        <p>
+                          {(() => {
+                            try {
+                              return JSON.parse(item.bankDetails).IFSC;
+                            } catch (error) {
+                              return "-";
+                            }
+                          })()}
+                        </p>
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="details">
+                    <p style={{ fontWeight: "bold" }}>PAN Number: &nbsp; </p>
+                    {item?.bankDetails ? (
+                      <div>
+                        <p>
+                          {(() => {
+                            try {
+                              return JSON.parse(item.bankDetails).PAN;
+                            } catch (error) {
+                              return "-";
+                            }
+                          })()}
+                        </p>
+                      </div>
+                    ) : null}
+                  </div>
+
+                  <div className="details">
+                    <p style={{ fontWeight: "bold" }}>GSTIN: &nbsp; </p>
+                    {item?.bankDetails ? (
+                      <div>
+                        <p>
+                          {(() => {
+                            try {
+                              return JSON.parse(item.bankDetails).GSTIN;
+                            } catch (error) {
+                              return "-";
+                            }
+                          })()}
+                        </p>
+                      </div>
+                    ) : null}
+                  </div>
                 </div>
               </div>
-            </div>
-
+            ) : (
+              <p
+                className="order-details-container"
+                style={{ background: "#f1f1f1", fontWeight: "bold" }}
+              >
+                No bank details available
+              </p>
+            )}
             <br></br>
-
             <div className="common-milestones-container">
               <p style={{ fontWeight: "bold" }}>
                 Payment Details (Total Amount: {"\u20B9 "}
@@ -1192,7 +1195,6 @@ const POItem = ({
                 </div>
               ))}
             </div>
-
             {window.innerWidth > 600 ? (
               <table
                 id="table"
@@ -1711,7 +1713,6 @@ const POItem = ({
                 {/* </table>  */}
               </div>
             )}
-
             <div className="total-details">
               <div
                 style={{
@@ -1828,7 +1829,6 @@ const POItem = ({
                 </div>
               </div>
             </div>
-
             {item.termsAndCondition.length > 0 ? (
               <div className="terms-condition">
                 <p style={{ fontWeight: "bold" }}>Terms & Conditions:</p>
@@ -1846,29 +1846,15 @@ const POItem = ({
             ) : (
               ""
             )}
-
             {window.innerWidth > 600 ? (
               <table id="table" style={{ textAlign: "center", width: "80%" }}>
                 <tbody>
                   <tr>
-                    <th>PRICE BASIS</th>
-                    <th>FREIGHT</th>
-                    <th>INSURANCE</th>
+                    <th colSpan="2">FREIGHT</th>
+                    <th colSpan="2">INSURANCE</th>
                   </tr>
                   <tr>
-                    <td>
-                      {item.priceBase
-                        ?.replace(/<single-quote>/g, "'")
-                        .replace(/<double-quote>/g, '"')
-                        .split("<new-line>")
-                        .map((text, index) => (
-                          <div key={index}>
-                            {text}
-                            <br />
-                          </div>
-                        ))}
-                    </td>
-                    <td>
+                    <td colSpan="2">
                       {item.freight
                         ?.replace(/<single-quote>/g, "'")
                         .replace(/<double-quote>/g, '"')
@@ -1880,7 +1866,7 @@ const POItem = ({
                           </div>
                         ))}
                     </td>
-                    <td>
+                    <td colSpan="2">
                       {item.insurance
                         ?.replace(/<single-quote>/g, "'")
                         .replace(/<double-quote>/g, '"')
@@ -1894,12 +1880,12 @@ const POItem = ({
                     </td>
                   </tr>
                   <tr>
-                    <th>SHIP TO ADDRESS</th>
-                    <th>BILL TO ADDRESS</th>
+                    <th colSpan="1">SHIP TO ADDRESS</th>
+                    <th colSpan="1">BILL TO ADDRESS</th>
                     <th>PAYMENT TERMS</th>
                   </tr>
                   <tr>
-                    <td>
+                    <td colSpan="1">
                       {item.shipToAddress
                         ?.replace(/<single-quote>/g, "'")
                         .replace(/<double-quote>/g, '"')
@@ -1911,7 +1897,7 @@ const POItem = ({
                           </div>
                         ))}
                     </td>
-                    <td>
+                    <td colSpan="1">
                       {item.billToAddress
                         ?.replace(/<single-quote>/g, "'")
                         .replace(/<double-quote>/g, '"')
@@ -2048,7 +2034,6 @@ const POItem = ({
                 )}
               </div>
             )}
-
             {item.specialInstructions.length > 0 ? (
               <div className="terms-condition">
                 <p style={{ fontWeight: "bold" }}>Special Instructions:</p>
@@ -2092,7 +2077,6 @@ const POItem = ({
                 obligations that arise as a consequence.
               </p>
             )}
-
             {JSON.parse(item.attachments).length > 0 ? (
               <div className="terms-condition">
                 <p style={{ fontWeight: "bold" }}>Attachments:</p>
@@ -2109,7 +2093,6 @@ const POItem = ({
             ) : (
               ""
             )}
-
             <div className="sign-container">
               <div
                 className="vendor-sign"
