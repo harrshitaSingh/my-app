@@ -923,7 +923,16 @@ const POItem = ({
                   </p>
                   {item?.bankDetails ? (
                     <div>
-                      <p>{JSON.parse(item.bankDetails).AccountHolderName}</p>
+                      <p>
+                        {(() => {
+                          try {
+                            return JSON.parse(item.bankDetails)
+                              .AccountHolderName;
+                          } catch (error) {
+                            return "-";
+                          }
+                        })()}
+                      </p>
                     </div>
                   ) : null}
                 </div>
@@ -931,7 +940,15 @@ const POItem = ({
                   <p style={{ fontWeight: "bold" }}>Account Number:&nbsp;</p>
                   {item?.bankDetails ? (
                     <div>
-                      <p>{JSON.parse(item.bankDetails).AccountNumber}</p>
+                      <p>
+                        {(() => {
+                          try {
+                            return JSON.parse(item.bankDetails).AccountNumber;
+                          } catch (error) {
+                            return "-";
+                          }
+                        })()}
+                      </p>
                     </div>
                   ) : null}
                 </div>
@@ -945,7 +962,15 @@ const POItem = ({
                   <p style={{ fontWeight: "bold" }}>IFSC Code: &nbsp; </p>
                   {item?.bankDetails ? (
                     <div>
-                      <p>{JSON.parse(item.bankDetails).IFSC}</p>
+                      <p>
+                        {(() => {
+                          try {
+                            return JSON.parse(item.bankDetails).IFSC;
+                          } catch (error) {
+                            return "-";
+                          }
+                        })()}
+                      </p>
                     </div>
                   ) : null}
                 </div>
@@ -953,7 +978,15 @@ const POItem = ({
                   <p style={{ fontWeight: "bold" }}>PAN Number: &nbsp; </p>
                   {item?.bankDetails ? (
                     <div>
-                      <p>{JSON.parse(item.bankDetails).PAN}</p>
+                      <p>
+                        {(() => {
+                          try {
+                            return JSON.parse(item.bankDetails).PAN;
+                          } catch (error) {
+                            return "-";
+                          }
+                        })()}
+                      </p>
                     </div>
                   ) : null}
                 </div>
@@ -962,7 +995,15 @@ const POItem = ({
                   <p style={{ fontWeight: "bold" }}>GSTIN: &nbsp; </p>
                   {item?.bankDetails ? (
                     <div>
-                      <p>{JSON.parse(item.bankDetails).GSTIN}</p>
+                      <p>
+                        {(() => {
+                          try {
+                            return JSON.parse(item.bankDetails).GSTIN;
+                          } catch (error) {
+                            return "-";
+                          }
+                        })()}
+                      </p>
                     </div>
                   ) : null}
                 </div>
