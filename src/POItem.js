@@ -897,6 +897,7 @@ const POItem = ({
                     </div>
                   ))}
             </div>
+
             <br></br>
             {item.bankDetails ? (
               <div
@@ -907,12 +908,20 @@ const POItem = ({
                   <p style={{ fontWeight: "bold" }}>Bank Details</p>
 
                   <div className="details">
-                    <p style={{ fontWeight: "bold" }}>Vendor Firm:&nbsp; </p>
-                    <p>
-                      {item.vendorFirm == null || item.vendorFirm == "null"
-                        ? "-"
-                        : item.vendorFirm}
-                    </p>
+                    <p style={{ fontWeight: "bold" }}>Vendor Firm: &nbsp; </p>
+                    {item?.bankDetails ? (
+                      <div>
+                        <p>
+                          {(() => {
+                            try {
+                              return JSON.parse(item.bankDetails).vendorFirm;
+                            } catch (error) {
+                              return "-";
+                            }
+                          })()}
+                        </p>
+                      </div>
+                    ) : null}
                   </div>
                   <div className="details">
                     <p style={{ fontWeight: "bold" }}>
@@ -947,7 +956,9 @@ const POItem = ({
                           })()}
                         </p>
                       </div>
-                    ) : null}
+                    ) : <p>
+                        No bank details available 
+                    </p>}
                   </div>
                 </div>
 
@@ -1007,13 +1018,9 @@ const POItem = ({
                 </div>
               </div>
             ) : (
-              <p
-                className="order-details-container"
-                style={{ background: "#f1f1f1", fontWeight: "bold" }}
-              >
-                No bank details available
-              </p>
+              <p>No bank details available</p>
             )}
+
             <br></br>
             <div className="common-milestones-container">
               <p style={{ fontWeight: "bold" }}>
