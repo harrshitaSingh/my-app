@@ -956,9 +956,14 @@ const POItem = ({
                           })()}
                         </p>
                       </div>
-                    ) : <p>
-                        No bank details available 
-                    </p>}
+                    ) : (
+                      <p
+                        className="order-details-container"
+                        style={{ background: "#f1f1f1" }}
+                      >
+                        No bank details available
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -1107,100 +1112,101 @@ const POItem = ({
                 </div>
               </div>
 
-              {poReqMilestone.map((item, index) => (
-                <div
-                  key={index}
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    width: "100%",
-                    padding: 10,
-                  }}
-                >
+              {poReqMilestone &&
+                poReqMilestone.map((item, index) => (
                   <div
+                    key={index}
                     style={{
                       display: "flex",
-                      width: "40%",
-                      maxWidth: "30%",
-                      minWidth: "30%",
-                      fontSize: 12,
+                      flexDirection: "row",
+                      width: "100%",
+                      padding: 10,
                     }}
                   >
-                    {item.paymentMilestoneName?.name}
+                    <div
+                      style={{
+                        display: "flex",
+                        width: "40%",
+                        maxWidth: "30%",
+                        minWidth: "30%",
+                        fontSize: 12,
+                      }}
+                    >
+                      {item.paymentMilestoneName?.name}
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        maxWidth: "auto%",
+                        minWidth: "15%",
+                        fontSize: 12,
+                      }}
+                    >
+                      {"\u20B9 "}
+                      {item.paymentMilestoneName?.totalAmount}
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        maxWidth: "auto%",
+                        minWidth: "15%",
+                        fontSize: 12,
+                      }}
+                    >
+                      {"\u20B9 "}
+                      {item.requestedAmount}
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        maxWidth: "auto%",
+                        minWidth: "15%",
+                        fontSize: 12,
+                      }}
+                    >
+                      {"\u20B9 "}
+                      {item.totalPaidAmount}
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        maxWidth: "auto%",
+                        minWidth: "15%",
+                        fontSize: 12,
+                      }}
+                    >
+                      {item.utrDetails}
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        maxWidth: "auto%",
+                        minWidth: "15%",
+                        fontSize: 12,
+                        color:
+                          item.status === "Bill Approved"
+                            ? "blue"
+                            : item.status === "Bill Declined"
+                            ? "red"
+                            : item.status === "Bill Raised"
+                            ? "orange"
+                            : item.status === "Bill On hold"
+                            ? "yellow"
+                            : item.status === "Bill Paid"
+                            ? "green"
+                            : "inherit",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      {item.status}
+                    </div>
                   </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      maxWidth: "auto%",
-                      minWidth: "15%",
-                      fontSize: 12,
-                    }}
-                  >
-                    {"\u20B9 "}
-                    {item.paymentMilestoneName?.totalAmount}
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      maxWidth: "auto%",
-                      minWidth: "15%",
-                      fontSize: 12,
-                    }}
-                  >
-                    {"\u20B9 "}
-                    {item.requestedAmount}
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      maxWidth: "auto%",
-                      minWidth: "15%",
-                      fontSize: 12,
-                    }}
-                  >
-                    {"\u20B9 "}
-                    {item.totalPaidAmount}
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      maxWidth: "auto%",
-                      minWidth: "15%",
-                      fontSize: 12,
-                    }}
-                  >
-                    {item.utrDetails}
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      maxWidth: "auto%",
-                      minWidth: "15%",
-                      fontSize: 12,
-                      color:
-                        item.status === "Bill Approved"
-                          ? "blue"
-                          : item.status === "Bill Declined"
-                          ? "red"
-                          : item.status === "Bill Raised"
-                          ? "orange"
-                          : item.status === "Bill On hold"
-                          ? "yellow"
-                          : item.status === "Bill Paid"
-                          ? "green"
-                          : "inherit",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {item.status}
-                  </div>
-                </div>
-              ))}
+                ))}
             </div>
             {window.innerWidth > 600 ? (
               <table
