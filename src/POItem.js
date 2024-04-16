@@ -1009,13 +1009,12 @@ const POItem = ({
                     {item?.bankDetails ? (
                       <div>
                         <p>
-                          {(() => {
-                            try {
-                              return JSON.parse(item.bankDetails).GSTIN;
-                            } catch (error) {
-                              return "-";
-                            }
-                          })()}
+                          {item.vendorMobile == null ||
+                          item.vendorMobile == "null" ||
+                          item.vendorMobile == "null : null" ||
+                          item.vendorMobile == "Open Vendor"
+                            ? "-"
+                            : item.vendorGSTIN}
                         </p>
                       </div>
                     ) : null}
@@ -1029,13 +1028,13 @@ const POItem = ({
             <br></br>
             <div className="common-milestones-container">
               <p style={{ fontWeight: "bold" }}>
-                Payment Details (Total Amount: {"\u20B9 "}
-                {lastObjectState?.totalAmount}, Total Requested Amount:{" "}
-                {"\u20B9 "}
-                {lastObjectState?.requestedAmount}, Total Paid Amount:{" "}
-                {"\u20B9 "}
-                {lastObjectState?.paidAmount})
+                Payment Details (Total Amount: {"\u20B9"}{" "}
+                {lastObjectState?.totalAmount.toFixed(2)}, Total Requested
+                Amount: {"\u20B9"} {lastObjectState?.requestedAmount.toFixed(2)}
+                , Total Paid Amount: {"\u20B9"}{" "}
+                {lastObjectState?.paidAmount.toFixed(2)})
               </p>
+
               <br></br>
               <div className="common-milestones-header">
                 <div
