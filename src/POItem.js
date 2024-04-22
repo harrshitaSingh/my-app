@@ -743,162 +743,190 @@ const POItem = ({
                 </div>
               </div>
             )}
-            <div className="common-milestones-container">
-              <div className="common-milestones-header">
-                <div
-                  style={{
-                    display: "flex",
-                    width: "40%",
-                    maxWidth: "40%",
-                    minWidth: "40%",
-                    fontWeight: 700,
-                    fontSize: 12,
-                  }}
-                >
-                  Payment Milestones
-                </div>
 
-                <div
-                  style={{
-                    display: "flex",
-                    width: "10%",
-                    justifyContent: "center",
-                    maxWidth: "auto%",
-                    minWidth: "20%",
-                    fontWeight: 700,
-                    fontSize: 12,
-                  }}
-                >
-                  %
-                </div>
+            {window.innerWidth > 600 ? (
+              <table
+                id="table"
+                style={{ fontSize: "13px", width: "80%", marginTop: "30px" }}
+              >
+                <tbody>
+                  {poReqMilestone.length == 0 ? null : (
+                    <tr>
+                      <th style={{ backgroundColor: "#fff6db" }}>
+                        Payment Milestones
+                      </th>
+                      <th style={{ backgroundColor: "#fff6db" }}>%</th>
+                      <th style={{ backgroundColor: "#fff6db" }}>Amount</th>
+                    </tr>
+                  )}
 
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "flex-end",
-                    justifyContent: "flex-end",
-                    // width: "10%",
-                    maxWidth: "auto",
-                    minWidth: "30%",
-                    fontWeight: 700,
-                    fontSize: 12,
-                    textAlign: "center",
-                  }}
-                >
-                  Amount
-                </div>
+                  {item?.CommonMilestones
+                    ? JSON.parse(item.CommonMilestones).map((mItem, mIndex) => (
+                        <tr key={mIndex}>
+                          <td
+                            style={{
+                              fontSize: 12,
+                              width: "40%",
+                              textAlign: "center",
+                            }}
+                          >
+                            {mItem.name}
+                          </td>
+                          <td
+                            style={{
+                              fontSize: 12,
+                              width: "20%",
+                              textAlign: "center",
+                            }}
+                          >
+                            {mItem.percentage} %
+                          </td>
+                          <td
+                            style={{
+                              fontSize: 12,
+                              width: "30%",
+                              textAlign: "right",
+                            }}
+                          >
+                            {"\u20B9 "}
+                            {Number(mItem.totalAmount).toFixed(2)}
+                          </td>
+                        </tr>
+                      ))
+                    : item.discription &&
+                      JSON.parse(item.discription)[
+                        commonMilestonesIndex
+                      ].milestones.map((mItem, mIndex) => (
+                        <tr key={mIndex}>
+                          <td
+                            style={{
+                              fontSize: 12,
+                              width: "40%",
+                              textAlign: "center",
+                            }}
+                          >
+                            {mItem.name}
+                          </td>
+                          <td
+                            style={{
+                              fontSize: 12,
+                              width: "20%",
+                              textAlign: "center",
+                            }}
+                          >
+                            {mItem.percentage} %
+                          </td>
+                          <td
+                            style={{
+                              fontSize: 12,
+                              width: "30%",
+                              textAlign: "right",
+                            }}
+                          >
+                            {"\u20B9 "}
+                            {(
+                              item.totalAmount *
+                              (mItem.percentage / 100)
+                            ).toFixed(2)}
+                          </td>
+                        </tr>
+                      ))}
+                </tbody>
+              </table>
+            ) : (
+              <div
+                style={{ fontSize: "13px", width: "80%", marginTop: "30px" }}
+              >
+                {poReqMilestone.length === 0 ? null : (
+                  <ul style={{ listStyleType: "none", padding: 0 }}>
+                    {poReqMilestone.map((item, index) => (
+                      <li
+                        key={index}
+                        style={{
+                          borderBottom: "1px solid #ccc",
+                          padding: "10px 0",
+                          display: "flex",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <div
+                          style={{
+                            fontSize: 12,
+                            width: "40%",
+                            textAlign: "center",
+                          }}
+                        >
+                          {item.CommonMilestones
+                            ? JSON.parse(item.CommonMilestones).map(
+                                (mItem, mIndex) => (
+                                  <div key={mIndex}>{mItem.name}</div>
+                                )
+                              )
+                            : item.discription &&
+                              JSON.parse(item.discription)[
+                                commonMilestonesIndex
+                              ].milestones.map((mItem, mIndex) => (
+                                <div key={mIndex}>{mItem.name}</div>
+                              ))}
+                        </div>
+                        <div
+                          style={{
+                            fontSize: 12,
+                            width: "20%",
+                            textAlign: "center",
+                          }}
+                        >
+                          {item.CommonMilestones
+                            ? JSON.parse(item.CommonMilestones).map(
+                                (mItem, mIndex) => (
+                                  <div key={mIndex}>{mItem.percentage} %</div>
+                                )
+                              )
+                            : item.discription &&
+                              JSON.parse(item.discription)[
+                                commonMilestonesIndex
+                              ].milestones.map((mItem, mIndex) => (
+                                <div key={mIndex}>{mItem.percentage} %</div>
+                              ))}
+                        </div>
+                        <div
+                          style={{
+                            fontSize: 12,
+                            width: "30%",
+                            textAlign: "right",
+                          }}
+                        >
+                          {item.CommonMilestones
+                            ? JSON.parse(item.CommonMilestones).map(
+                                (mItem, mIndex) => (
+                                  <div key={mIndex}>
+                                    {"\u20B9 "}
+                                    {Number(mItem.totalAmount).toFixed(2)}
+                                  </div>
+                                )
+                              )
+                            : item.discription &&
+                              JSON.parse(item.discription)[
+                                commonMilestonesIndex
+                              ].milestones.map((mItem, mIndex) => (
+                                <div key={mIndex}>
+                                  {"\u20B9 "}
+                                  {(
+                                    item.totalAmount *
+                                    (mItem.percentage / 100)
+                                  ).toFixed(2)}
+                                </div>
+                              ))}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
-
-              {item?.CommonMilestones
-                ? JSON.parse(item.CommonMilestones).map((mItem, mIndex) => (
-                    <div
-                      key={mIndex}
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        width: "100%",
-                        padding: 10,
-                      }}
-                    >
-                      <div
-                        style={{
-                          display: "flex",
-                          width: "40%",
-                          maxWidth: "40%",
-                          minWidth: "40%",
-                          fontSize: 12,
-                        }}
-                      >
-                        {mItem.name}
-                      </div>
-                      <div
-                        style={{
-                          display: "flex",
-                          // width: "10%",
-                          justifyContent: "center",
-                          maxWidth: "auto%",
-                          minWidth: "20%",
-                          fontSize: 12,
-                        }}
-                      >
-                        {mItem.percentage} %
-                      </div>
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "row",
-                          justifyContent: "flex-end",
-                          // width: "10%",
-                          maxWidth: "auto",
-                          minWidth: "30%",
-                          fontSize: 12,
-                          textAlign: "center",
-                        }}
-                      >
-                        {"\u20B9 "}
-                        {Number(mItem.totalAmount).toFixed(2)}
-                      </div>
-                    </div>
-                  ))
-                : item.discription &&
-                  JSON.parse(item.discription)[
-                    commonMilestonesIndex
-                  ].milestones.map((mItem, mIndex) => (
-                    <div
-                      key={mIndex}
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        width: "100%",
-                        padding: 10,
-                      }}
-                    >
-                      <div
-                        style={{
-                          display: "flex",
-                          width: "40%",
-                          maxWidth: "40%",
-                          minWidth: "40%",
-                          fontSize: 12,
-                        }}
-                      >
-                        {mItem.name}
-                      </div>
-                      <div
-                        style={{
-                          display: "flex",
-                          // width: "10%",
-                          justifyContent: "center",
-                          maxWidth: "auto%",
-                          minWidth: "20%",
-                          fontSize: 12,
-                        }}
-                      >
-                        {mItem.percentage} %
-                      </div>
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "row",
-                          justifyContent: "flex-end",
-                          // width: "10%",
-                          maxWidth: "auto",
-                          minWidth: "30%",
-                          fontSize: 12,
-                          textAlign: "center",
-                        }}
-                      >
-                        {"\u20B9 "}
-                        {/* {Number(mItem.totalAmount).toFixed(2)} */}
-                        {(item.totalAmount * (mItem.percentage / 100)).toFixed(
-                          2
-                        )}
-                      </div>
-                    </div>
-                  ))}
-            </div>
+            )}
 
             <br></br>
+
             {item.bankDetails ? (
               <div
                 className="order-details-container"
@@ -908,21 +936,14 @@ const POItem = ({
                   <p style={{ fontWeight: "bold" }}>Bank Details</p>
 
                   <div className="details">
-                    <p style={{ fontWeight: "bold" }}>Vendor Firm: &nbsp; </p>
-                    {item?.bankDetails ? (
-                      <div>
-                        <p>
-                          {(() => {
-                            try {
-                              return JSON.parse(item.bankDetails).vendorFirm;
-                            } catch (error) {
-                              return "-";
-                            }
-                          })()}
-                        </p>
-                      </div>
-                    ) : null}
+                    <p style={{ fontWeight: "bold" }}>Vendor Firm:&nbsp; </p>
+                    <p>
+                      {item.vendorFirm == null || item.vendorFirm == "null"
+                        ? "-"
+                        : item.vendorFirm}
+                    </p>
                   </div>
+
                   <div className="details">
                     <p style={{ fontWeight: "bold" }}>
                       Account Holder Name:&nbsp;{" "}
@@ -1006,18 +1027,14 @@ const POItem = ({
 
                   <div className="details">
                     <p style={{ fontWeight: "bold" }}>GSTIN: &nbsp; </p>
-                    {item?.bankDetails ? (
-                      <div>
-                        <p>
-                          {item.vendorMobile == null ||
-                          item.vendorMobile == "null" ||
-                          item.vendorMobile == "null : null" ||
-                          item.vendorMobile == "Open Vendor"
-                            ? "-"
-                            : item.vendorGSTIN}
-                        </p>
-                      </div>
-                    ) : null}
+                    <p>
+                      {item.vendorMobile == null ||
+                      item.vendorMobile == "null" ||
+                      item.vendorMobile == "null : null" ||
+                      item.vendorMobile == "Open Vendor"
+                        ? "-"
+                        : item.vendorGSTIN}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -1026,187 +1043,209 @@ const POItem = ({
             )}
 
             <br></br>
+
             <div className="common-milestones-container">
+              {console.log("heeloo po amtx")}
               <p style={{ fontWeight: "bold" }}>
                 Payment Details (Total Amount: {"\u20B9"}{" "}
-                {lastObjectState?.totalAmount.toFixed(2)}, Total Requested
-                Amount: {"\u20B9"} {lastObjectState?.requestedAmount.toFixed(2)}
-                , Total Paid Amount: {"\u20B9"}{" "}
-                {lastObjectState?.paidAmount.toFixed(2)})
+                {lastObjectState?.totalAmount}, Total Requested Amount:{" "}
+                {"\u20B9"} {lastObjectState?.requestedAmount}, Total Paid
+                Amount: {"\u20B9"} {lastObjectState?.totalPaidAmount})
               </p>
 
-              <br></br>
-              <div className="common-milestones-header">
-                <div
-                  style={{
-                    display: "flex",
-                    width: "40%",
-                    maxWidth: "30%",
-                    minWidth: "30%",
-                    fontWeight: 700,
-                    fontSize: 12,
-                  }}
+              {window.innerWidth > 600 ? (
+                <table
+                  id="table"
+                  style={{ fontSize: "13px", width: "100%", marginTop: "30px" }}
                 >
-                  Payment Milestones
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    maxWidth: "auto%",
-                    minWidth: "15%",
-                    fontWeight: 700,
-                    fontSize: 12,
-                  }}
-                >
-                  Total Amount
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    maxWidth: "auto%",
-                    minWidth: "15%",
-                    fontWeight: 700,
-                    fontSize: 12,
-                  }}
-                >
-                  Requested Amount
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    maxWidth: "auto%",
-                    minWidth: "15%",
-                    fontWeight: 700,
-                    fontSize: 12,
-                  }}
-                >
-                  Total Paid Amount
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    maxWidth: "auto%",
-                    minWidth: "15%",
-                    fontWeight: 700,
-                    fontSize: 12,
-                  }}
-                >
-                  UTR Details
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    maxWidth: "auto%",
-                    minWidth: "15%",
-                    fontWeight: 700,
-                    fontSize: 12,
-                  }}
-                >
-                  Status
-                </div>
-              </div>
+                  <tbody>
+                    {poReqMilestone.length === 0 ? null : (
+                      <tr>
+                        <th style={{ backgroundColor: "#fff6db" }}>
+                          Payment Milestones
+                        </th>
+                        <th style={{ backgroundColor: "#fff6db" }}>
+                          Total Amount
+                        </th>
+                        <th style={{ backgroundColor: "#fff6db" }}>
+                          Requested Amount
+                        </th>
+                        <th style={{ backgroundColor: "#fff6db" }}>
+                          Total Paid Amount
+                        </th>
+                        <th style={{ backgroundColor: "#fff6db" }}>
+                          UTR Details
+                        </th>
+                        <th style={{ backgroundColor: "#fff6db" }}>Status</th>
+                      </tr>
+                    )}
 
-              {poReqMilestone &&
-                poReqMilestone.map((item, index) => (
-                  <div
-                    key={index}
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      width: "100%",
-                      padding: 10,
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: "flex",
-                        width: "40%",
-                        maxWidth: "30%",
-                        minWidth: "30%",
-                        fontSize: 12,
-                      }}
-                    >
-                      {item.paymentMilestoneName?.name}
-                    </div>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        maxWidth: "auto%",
-                        minWidth: "15%",
-                        fontSize: 12,
-                      }}
-                    >
-                      {"\u20B9 "}
-                      {item.paymentMilestoneName?.totalAmount}
-                    </div>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        maxWidth: "auto%",
-                        minWidth: "15%",
-                        fontSize: 12,
-                      }}
-                    >
-                      {"\u20B9 "}
-                      {item.requestedAmount}
-                    </div>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        maxWidth: "auto%",
-                        minWidth: "15%",
-                        fontSize: 12,
-                      }}
-                    >
-                      {"\u20B9 "}
-                      {item.totalPaidAmount}
-                    </div>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        maxWidth: "auto%",
-                        minWidth: "15%",
-                        fontSize: 12,
-                      }}
-                    >
-                      {item.utrDetails}
-                    </div>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        maxWidth: "auto%",
-                        minWidth: "15%",
-                        fontSize: 12,
-                        color:
-                          item.status === "Bill Approved"
-                            ? "blue"
-                            : item.status === "Bill Declined"
-                            ? "red"
-                            : item.status === "Bill Raised"
-                            ? "orange"
-                            : item.status === "Bill On hold"
-                            ? "yellow"
-                            : item.status === "Bill Paid"
-                            ? "green"
-                            : "inherit",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      {item.status}
-                    </div>
-                  </div>
-                ))}
+                    {poReqMilestone &&
+                      poReqMilestone.map((item, index) => (
+                        <tr key={index}>
+                          <td style={{ fontSize: 12, textAlign: "center" }}>
+                            {item.paymentMilestoneName?.name}
+                          </td>
+                          <td style={{ fontSize: 12, textAlign: "center" }}>
+                            {"\u20B9 "}
+                            {item.paymentMilestoneName?.totalAmount}
+                          </td>
+                          <td style={{ fontSize: 12, textAlign: "center" }}>
+                            {"\u20B9 "}
+                            {item.requestedAmount}
+                          </td>
+                          <td style={{ fontSize: 12, textAlign: "center" }}>
+                            {"\u20B9 "}
+                            {item.totalPaidAmount}
+                          </td>
+                          <td style={{ fontSize: 12, textAlign: "center" }}>
+                            {item.utrDetails}
+                          </td>
+                          <td
+                            style={{
+                              fontSize: 12,
+                              fontWeight: "bold",
+                              textAlign: "center",
+                              color:
+                                item.status === "Bill Approved"
+                                  ? "blue"
+                                  : item.status === "Bill Declined"
+                                  ? "red"
+                                  : item.status === "Bill Raised"
+                                  ? "orange"
+                                  : item.status === "Bill On hold"
+                                  ? "yellow"
+                                  : item.status === "Bill Paid"
+                                  ? "green"
+                                  : "inherit",
+                            }}
+                          >
+                            {item.status}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              ) : (
+                <div
+                  style={{ fontSize: "13px", width: "100%", marginTop: "30px" }}
+                >
+                  {poReqMilestone.length === 0 ? null : (
+                    <ul style={{ listStyleType: "none", padding: 0 }}>
+                      <li
+                        style={{
+                          backgroundColor: "#fff6db",
+                          display: "flex",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        <div style={{ flex: 1, textAlign: "center" }}>
+                          Payment Milestones
+                        </div>
+                        <div style={{ flex: 1, textAlign: "center" }}>
+                          Total Amount
+                        </div>
+                        <div style={{ flex: 1, textAlign: "center" }}>
+                          Requested Amount
+                        </div>
+                        <div style={{ flex: 1, textAlign: "center" }}>
+                          Total Paid Amount
+                        </div>
+                        <div style={{ flex: 1, textAlign: "center" }}>
+                          UTR Details
+                        </div>
+                        <div style={{ flex: 1, textAlign: "center" }}>
+                          Status
+                        </div>
+                      </li>
+                      {poReqMilestone.map((item, index) => (
+                        <li
+                          key={index}
+                          style={{
+                            display: "flex",
+                            borderBottom: "1px solid #ccc",
+                            paddingTop: "10px",
+                            paddingBottom: "10px",
+                          }}
+                        >
+                          <div
+                            style={{
+                              flex: 1,
+                              fontSize: 12,
+                              textAlign: "center",
+                            }}
+                          >
+                            {item.paymentMilestoneName?.name}
+                          </div>
+                          <div
+                            style={{
+                              flex: 1,
+                              fontSize: 12,
+                              textAlign: "center",
+                            }}
+                          >
+                            {"\u20B9 "}
+                            {item.paymentMilestoneName?.totalAmount}
+                          </div>
+                          <div
+                            style={{
+                              flex: 1,
+                              fontSize: 12,
+                              textAlign: "center",
+                            }}
+                          >
+                            {"\u20B9 "}
+                            {item.requestedAmount}
+                          </div>
+                          <div
+                            style={{
+                              flex: 1,
+                              fontSize: 12,
+                              textAlign: "center",
+                            }}
+                          >
+                            {"\u20B9 "}
+                            {item.totalPaidAmount}
+                          </div>
+                          <div
+                            style={{
+                              flex: 1,
+                              fontSize: 12,
+                              textAlign: "center",
+                            }}
+                          >
+                            {item.utrDetails}
+                          </div>
+                          <div
+                            style={{
+                              flex: 1,
+                              fontSize: 12,
+                              textAlign: "center",
+                              fontWeight: "bold",
+                              color:
+                                item.status === "Bill Approved"
+                                  ? "blue"
+                                  : item.status === "Bill Declined"
+                                  ? "red"
+                                  : item.status === "Bill Raised"
+                                  ? "orange"
+                                  : item.status === "Bill On hold"
+                                  ? "yellow"
+                                  : item.status === "Bill Paid"
+                                  ? "green"
+                                  : "inherit",
+                            }}
+                          >
+                            {item.status}
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              )}
             </div>
+
             {window.innerWidth > 600 ? (
               <table
                 id="table"
@@ -1480,7 +1519,6 @@ const POItem = ({
                     <p>Custom Milestone Items:</p>
                   </div>
                 )}
-                {<div style={{ display: "none" }}>{(orderNo = 0)}</div>}
                 <div>
                   {item.discription &&
                     JSON.parse(item.discription).map((item, index) => {
@@ -2071,13 +2109,6 @@ const POItem = ({
                 className="terms-condition"
               >
                 <span style={{ color: "red" }}>*</span>
-                {/* Uniworks has a policy that permits a maximum billing adjustment
-                of 1% in cases where the on-site area or dimensions differ from
-                those originally specified in the purchase order. To ensure
-                accurate billing, any modifications or revisions to the area or
-                dimensions must be communicated in advance. If such changes are
-                not reported beforehand, vendors will be held accountable for
-                any financial obligations that arise as a consequence.  */}
                 Uniworks has a policy that permits a maximum billing upward
                 adjustment/acceptance up to 2.5% of the PO value in cases where
                 the on-site area or dimensions differ from those originally
@@ -2201,102 +2232,6 @@ const POItem = ({
                 <p style={{ fontWeight: "bold" }}>Authorized Signatory</p>
               </div>
             </div>
-            {/* {console.log("approva", item.approvalDetails)} */}
-            {/* {!item.approvalDetails &&
-            (!item.approvalDetails ||
-              JSON.parse(item.approvalDetails) === "Ordered" ||
-              JSON.parse(item.approvalDetails).status === "Approved" ||
-              JSON.parse(item.approvalDetails).status === "Ordered") ? (
-              ""
-            ) : (
-              <div className="approval_container">
-                <button
-                  onClick={() => {
-                    setdeclineModal(true);
-                  }}
-                  className="vendor-sign-btn sign-accept"
-                >
-                  Decline
-                </button>
-                <button
-                  className="vendor-sign-btn sign-accept"
-                  onClick={async () => {
-                    // approveConfirmation(item.OrderId,item)
-                    // approveHandler()
-                    const objecttoupdate = await approveHandlerUpdateApproved(
-                      item.OrderId,
-                      item
-                    );
-                    // setPoData((prev)=> {
-                    //   prev[0].approvalDetails = JSON.stringify(objecttoupdate) // directly manipulating the value
-                    //   return prev
-                    // })
-                    await getPoByOrderId();
-                  }}
-                >
-                  Approve
-                </button>
-              </div>
-            )} */}
-            {/* {declineModal && (
-              <Dialog
-                open={declineModal}
-                onClose={() => {
-                  setdeclineModal(false);
-                }}
-                maxWidth="sm"
-                fullWidth={true}
-              >
-                <div>
-                  <div className="comment-decline-header">
-                    <h3>Comment & Decline</h3>
-                  </div>
-                  <div className="comment-decline-body">
-                    <RemarkTextBox
-                      rows="8"
-                      cols="80"
-                      value={JSON.parse(item.approvalDetails)?.comment}
-                      onUpdate={(e) => {
-                        console.log("e", e.target.value);
-                        let value = e.currentTarget.value;
-                        value = value?.replace(/'/g, "<single-quote>");
-                        value = value?.replace(/"/g, "<double-quote>");
-                        value = value?.replace(/₹/g, "<rupee-symbol>");
-                        value = value.replace(/\n/g, "<new-line>");
-                        setComment(value);
-                      }}
-                      style={{ fontSize: "1.2rem", padding: "0.4em" }}
-                    />
-                  </div>
-                  <div className="comment-decline-bottom">
-                    <button
-                      onClick={async () => {
-                        setdeclineModal(false);
-                        const objectUpdated = await commentHandler(
-                          item.OrderId,
-                          item,
-                          commenttoUpdate
-                        );
-                        // getPoByOrderId()
-                        console.log("objectUpdated", objectUpdated);
-                        setPoData((prev) => {
-                          prev[0].approvalDetails =
-                            JSON.stringify(objectUpdated); // directly manipulating the value
-                          return prev;
-                        });
-                        toast.success("Message Sent!", {
-                          backgroundColor: "rgb(255, 211, 77)",
-                          color: "black",
-                        });
-                      }}
-                      className="vendor-sign-btn sign-accept"
-                    >
-                      Comment
-                    </button>
-                  </div>
-                </div>
-              </Dialog>
-            )} */}
           </div>
           {olderverions &&
             olderverions.map((data, index) => (
