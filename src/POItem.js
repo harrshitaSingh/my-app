@@ -750,15 +750,13 @@ const POItem = ({
                 style={{ fontSize: "13px", width: "80%", marginTop: "30px" }}
               >
                 <tbody>
-                  {poReqMilestone.length == 0 ? null : (
-                    <tr>
-                      <th style={{ backgroundColor: "#fff6db" }}>
-                        Payment Milestones
-                      </th>
-                      <th style={{ backgroundColor: "#fff6db" }}>%</th>
-                      <th style={{ backgroundColor: "#fff6db" }}>Amount</th>
-                    </tr>
-                  )}
+                  <tr>
+                    <th style={{ backgroundColor: "#fff6db" }}>
+                      Payment Milestones
+                    </th>
+                    <th style={{ backgroundColor: "#fff6db" }}>%</th>
+                    <th style={{ backgroundColor: "#fff6db" }}>Amount</th>
+                  </tr>
 
                   {item?.CommonMilestones
                     ? JSON.parse(item.CommonMilestones).map((mItem, mIndex) => (
@@ -785,7 +783,7 @@ const POItem = ({
                             style={{
                               fontSize: 12,
                               width: "30%",
-                              textAlign: "right",
+                              textAlign: "center",
                             }}
                           >
                             {"\u20B9 "}
@@ -820,7 +818,7 @@ const POItem = ({
                             style={{
                               fontSize: 12,
                               width: "30%",
-                              textAlign: "right",
+                              textAlign: "center",
                             }}
                           >
                             {"\u20B9 "}
@@ -837,91 +835,69 @@ const POItem = ({
               <div
                 style={{ fontSize: "13px", width: "80%", marginTop: "30px" }}
               >
-                {poReqMilestone.length === 0 ? null : (
-                  <ul style={{ listStyleType: "none", padding: 0 }}>
-                    {poReqMilestone.map((item, index) => (
-                      <li
-                        key={index}
-                        style={{
-                          borderBottom: "1px solid #ccc",
-                          padding: "10px 0",
-                          display: "flex",
-                          justifyContent: "space-between",
-                        }}
-                      >
+                <div>
+                  <div
+                    style={{
+                      backgroundColor: "#fff6db",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    <div>Payment Milestones</div>
+                    <div>%</div>
+                    <div>Amount</div>
+                  </div>
+
+                  {item?.CommonMilestones
+                    ? JSON.parse(item.CommonMilestones).map((mItem, mIndex) => (
                         <div
+                          key={mIndex}
                           style={{
-                            fontSize: 12,
-                            width: "40%",
-                            textAlign: "center",
+                            display: "flex",
+                            justifyContent: "space-between",
+                            padding: "5px 10px",
                           }}
                         >
-                          {item.CommonMilestones
-                            ? JSON.parse(item.CommonMilestones).map(
-                                (mItem, mIndex) => (
-                                  <div key={mIndex}>{mItem.name}</div>
-                                )
-                              )
-                            : item.discription &&
-                              JSON.parse(item.discription)[
-                                commonMilestonesIndex
-                              ].milestones.map((mItem, mIndex) => (
-                                <div key={mIndex}>{mItem.name}</div>
-                              ))}
+                          <div style={{ width: "40%", textAlign: "center" }}>
+                            {mItem.name}
+                          </div>
+                          <div style={{ width: "20%", textAlign: "center" }}>
+                            {mItem.percentage} %
+                          </div>
+                          <div style={{ width: "30%", textAlign: "right" }}>
+                            {"\u20B9 "} {Number(mItem.totalAmount).toFixed(2)}
+                          </div>
                         </div>
+                      ))
+                    : item.discription &&
+                      JSON.parse(item.discription)[
+                        commonMilestonesIndex
+                      ].milestones.map((mItem, mIndex) => (
                         <div
+                          key={mIndex}
                           style={{
-                            fontSize: 12,
-                            width: "20%",
-                            textAlign: "center",
+                            display: "flex",
+                            justifyContent: "space-between",
+                            padding: "5px 10px",
                           }}
                         >
-                          {item.CommonMilestones
-                            ? JSON.parse(item.CommonMilestones).map(
-                                (mItem, mIndex) => (
-                                  <div key={mIndex}>{mItem.percentage} %</div>
-                                )
-                              )
-                            : item.discription &&
-                              JSON.parse(item.discription)[
-                                commonMilestonesIndex
-                              ].milestones.map((mItem, mIndex) => (
-                                <div key={mIndex}>{mItem.percentage} %</div>
-                              ))}
+                          <div style={{ width: "40%", textAlign: "center" }}>
+                            {mItem.name}
+                          </div>
+                          <div style={{ width: "20%", textAlign: "center" }}>
+                            {mItem.percentage} %
+                          </div>
+                          <div style={{ width: "30%", textAlign: "right" }}>
+                            {"\u20B9 "}{" "}
+                            {(
+                              item.totalAmount *
+                              (mItem.percentage / 100)
+                            ).toFixed(2)}
+                          </div>
                         </div>
-                        <div
-                          style={{
-                            fontSize: 12,
-                            width: "30%",
-                            textAlign: "right",
-                          }}
-                        >
-                          {item.CommonMilestones
-                            ? JSON.parse(item.CommonMilestones).map(
-                                (mItem, mIndex) => (
-                                  <div key={mIndex}>
-                                    {"\u20B9 "}
-                                    {Number(mItem.totalAmount).toFixed(2)}
-                                  </div>
-                                )
-                              )
-                            : item.discription &&
-                              JSON.parse(item.discription)[
-                                commonMilestonesIndex
-                              ].milestones.map((mItem, mIndex) => (
-                                <div key={mIndex}>
-                                  {"\u20B9 "}
-                                  {(
-                                    item.totalAmount *
-                                    (mItem.percentage / 100)
-                                  ).toFixed(2)}
-                                </div>
-                              ))}
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                      ))}
+                </div>
               </div>
             )}
 
