@@ -20,9 +20,6 @@ const POItem = ({
 
   console.log("i am last", lastObjectState);
 
-  let totalAmount = 0;
-  let totalRequestedAmount = 0;
-  let totalAmountPaid = 0;
 
   useEffect(() => {
     let highlightTimer = setTimeout(() => {
@@ -116,12 +113,7 @@ const POItem = ({
 
   const onSignSubmitHandler = async () => {
     await uploadSignature(signPad.getTrimmedCanvas().toDataURL());
-    //  setImageStates(true)
-    //  await sleep(2000)
-
     onCloseModalHandler();
-    //  setImageStates(false)
-    // console.log('poData',poData,"ID",poData[0].Id)
   };
 
   const [milestoneTobeAddedIndex, setMilestoneTobeAddedIndex] = useState([]);
@@ -1035,7 +1027,7 @@ const POItem = ({
                   style={{ fontSize: "13px", width: "100%", marginTop: "30px" }}
                 >
                   <tbody>
-                    {poReqMilestone.length === 0 ? null : (
+              
                       <tr>
                         <th style={{ backgroundColor: "#fff6db" }}>
                           Payment Milestones
@@ -1054,7 +1046,7 @@ const POItem = ({
                         </th>
                         <th style={{ backgroundColor: "#fff6db" }}>Status</th>
                       </tr>
-                    )}
+                
 
                     {poReqMilestone &&
                       poReqMilestone.map((item, index) => (
