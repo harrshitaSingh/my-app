@@ -1,3 +1,9 @@
+/* eslint-disable react/jsx-no-target-blank */
+/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable array-callback-return */
+/* eslint-disable eqeqeq */
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import "../src/table1.scss";
 import "../src/table2.scss";
@@ -1095,122 +1101,63 @@ const POItem = ({
                   </tbody>
                 </table>
               ) : (
-                <div
-                  style={{ fontSize: "13px", width: "100%", marginTop: "30px" }}
-                >
-                  {poReqMilestone.length === 0 ? null : (
-                    <ul style={{ listStyleType: "none", padding: 0 }}>
-                      <li
-                        style={{
-                          backgroundColor: "#fff6db",
-                          display: "flex",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        <div style={{ flex: 1, textAlign: "center" }}>
-                          Payment Milestones
-                        </div>
-                        <div style={{ flex: 1, textAlign: "center" }}>
-                          Total Amount
-                        </div>
-                        <div style={{ flex: 1, textAlign: "center" }}>
-                          Requested Amount
-                        </div>
-                        <div style={{ flex: 1, textAlign: "center" }}>
-                          Total Paid Amount
-                        </div>
-                        <div style={{ flex: 1, textAlign: "center" }}>
-                          UTR Details
-                        </div>
-                        <div style={{ flex: 1, textAlign: "center" }}>
-                          Status
-                        </div>
-                      </li>
-                      {poReqMilestone.map((item, index) => (
-                        <li
-                          key={index}
-                          style={{
-                            display: "flex",
-                            borderBottom: "1px solid #ccc",
-                            paddingTop: "10px",
-                            paddingBottom: "10px",
-                          }}
-                        >
-                          <div
-                            style={{
-                              flex: 1,
-                              fontSize: 12,
-                              textAlign: "center",
-                            }}
-                          >
-                            {item.paymentMilestoneName?.name}
-                          </div>
-                          <div
-                            style={{
-                              flex: 1,
-                              fontSize: 12,
-                              textAlign: "center",
-                            }}
-                          >
-                            {"\u20B9 "}
-                            {item.paymentMilestoneName?.totalAmount}
-                          </div>
-                          <div
-                            style={{
-                              flex: 1,
-                              fontSize: 12,
-                              textAlign: "center",
-                            }}
-                          >
-                            {"\u20B9 "}
-                            {item.requestedAmount}
-                          </div>
-                          <div
-                            style={{
-                              flex: 1,
-                              fontSize: 12,
-                              textAlign: "center",
-                            }}
-                          >
-                            {"\u20B9 "}
-                            {item.totalPaidAmount}
-                          </div>
-                          <div
-                            style={{
-                              flex: 1,
-                              fontSize: 12,
-                              textAlign: "center",
-                            }}
-                          >
-                            {item.utrDetails}
-                          </div>
-                          <div
-                            style={{
-                              flex: 1,
-                              fontSize: 12,
-                              textAlign: "center",
-                              fontWeight: "bold",
-                              color:
-                                item.status === "Bill Approved"
-                                  ? "blue"
-                                  : item.status === "Bill Declined"
-                                  ? "red"
-                                  : item.status === "Bill Raised"
-                                  ? "orange"
-                                  : item.status === "Bill On hold"
-                                  ? "yellow"
-                                  : item.status === "Bill Paid"
-                                  ? "green"
-                                  : "inherit",
-                            }}
-                          >
-                            {item.status}
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
+           <div
+    style={{ fontSize: "13px", width: "100%", marginTop: "30px" }}
+  >
+    {poReqMilestone.length === 0 ? null : (
+      <ul style={{ listStyleType: "none", padding: 0 }}>
+        {poReqMilestone.map((item, index) => (
+          <li
+            key={index}
+            style={{
+              borderBottom: "1px solid #ccc",
+              paddingTop: "10px",
+              paddingBottom: "10px",
+            }}
+          >
+            <div>
+              <strong>Payment Milestones:</strong> {item.paymentMilestoneName?.name}
+            </div>
+            <div>
+              <strong>Total Amount:</strong> {"\u20B9 "}
+              {item.paymentMilestoneName?.totalAmount}
+            </div>
+            <div>
+              <strong>Requested Amount:</strong> {"\u20B9 "}
+              {item.requestedAmount}
+            </div>
+            <div>
+              <strong>Total Paid Amount:</strong> {"\u20B9 "}
+              {item.totalPaidAmount}
+            </div>
+            <div>
+              <strong>UTR Details:</strong> {item.utrDetails}
+            </div>
+            <div
+              style={{
+                fontWeight: "bold",
+                color:
+                  item.status === "Bill Approved"
+                    ? "blue"
+                    : item.status === "Bill Declined"
+                    ? "red"
+                    : item.status === "Bill Raised"
+                    ? "orange"
+                    : item.status === "Bill On hold"
+                    ? "yellow"
+                    : item.status === "Bill Paid"
+                    ? "green"
+                    : "inherit",
+              }}
+            >
+              <strong>Status:</strong> {item.status}
+            </div>
+          </li>
+        ))}
+      </ul>
+    )}
+                  </div>
+                  
               )}
             </div>
 
