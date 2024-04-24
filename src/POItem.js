@@ -1018,7 +1018,7 @@ const POItem = ({
                 Payment Details (Total Amount: {"\u20B9"}{" "}
                 {lastObjectState?.totalAmount}, Total Requested Amount:{" "}
                 {"\u20B9"} {lastObjectState?.requestedAmount}, Total Paid
-                Amount: {"\u20B9"} {lastObjectState?.totalPaidAmount})
+                Amount: {"\u20B9"} {lastObjectState?.paidAmount})
               </p>
 
               {window.innerWidth > 600 ? (
@@ -1046,7 +1046,7 @@ const POItem = ({
                         </th>
                         <th style={{ backgroundColor: "#fff6db" }}>Status</th>
                       </tr>
-                
+      
 
                     {poReqMilestone &&
                       poReqMilestone.map((item, index) => (

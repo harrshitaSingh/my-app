@@ -16,7 +16,6 @@ export default function PO() {
     "sdfsdfsfdsfdsfdsfdsfsdfdsfdsfdsfsdfdsf",
     window.my_special_setting
   );
-  // const { pathname } = useLocation();
 
   function getQueryParam(name) {
     console.log("getQueryParam is MdCallEnd..");
@@ -40,7 +39,6 @@ export default function PO() {
   var poId = null;
   var requestId = null;
 
-  // var database = firebase.database();
 
   useEffect(() => {
     getPoByOrderId();
@@ -70,13 +68,13 @@ export default function PO() {
           let tempMilestonesArray = [];
 
           for (let value = 0; value < tempResPayload.length; value++) {
-            // write the code here
+            
             tempMilestonesArray.push(tempResPayload[value].milestones);
           }
           let commonMiestones = findMilestonesFromDraft(tempMilestonesArray);
           let tempIndexes = [];
           for (let value = 0; value < tempResPayload.length; value++) {
-            // write the code here
+            
             if (
               checkMilestonesToBeEqaul(
                 commonMiestones,
@@ -88,27 +86,18 @@ export default function PO() {
             }
           }
 
-          // console.log(
-          //   "res.payload discription : ",
-          //   JSON.parse(res.payload[0].discription)
-          // );
           let tempItems = JSON.parse(res.payload[0].discription);
-          //filtering the items if same rate and same unit
           let tempObjFreqDesc = {};
           let arrayOfDescriptionandSpecifications = [];
 
           for (let index = 0; index <= tempItems.length - 1; index++) {
-            // console.log("items from tempItems : ", index, " : ", tempItems[index]);
-            // console.log("tempItems[index].workType : ", tempItems[index].workType);
-
             if (typeof tempItems[index].workType != "undefined") {
-              // console.log("work type foundff"); // this means work or work + material
               if (
                 arrayOfDescriptionandSpecifications.includes(
                   tempItems[index].description
                 )
               ) {
-                // write the code here
+                
                 tempObjFreqDesc[tempItems[index].description].rate.push(
                   tempItems[index].rate
                 );
@@ -123,14 +112,9 @@ export default function PO() {
                 );
                 tempObjFreqDesc[tempItems[index].description].unit.push(
                   tempItems[index].unit
-                );
-
-                // console.log(
-                //   "type of tempObjFreqDesc",
-                //   tempObjFreqDesc[tempItems[index].description].length
-                // );
+                );;
               } else {
-                // write the code here
+                
                 arrayOfDescriptionandSpecifications.push(
                   tempItems[index].description
                 );
@@ -144,19 +128,12 @@ export default function PO() {
                 };
               }
             } else {
-              // write the code here
-              // console.log("work type not found f"); // this means material
-              // console.log(
-              //   "tempItems[index].specification : ",
-              //   tempItems[index].specification
-              // );
-
               if (
                 arrayOfDescriptionandSpecifications.includes(
                   tempItems[index].specification
                 )
               ) {
-                // write the code here
+                
 
                 tempObjFreqDesc[tempItems[index].specification].rate.push(
                   tempItems[index].rate
@@ -164,9 +141,6 @@ export default function PO() {
                 tempObjFreqDesc[tempItems[index].specification].quantity.push(
                   +tempItems[index].quantity
                 );
-                // tempObjFreqDesc[tempItems[index].specification].workType.push(
-                //   tempItems[index].workType
-                // );
                 tempObjFreqDesc[tempItems[index].specification].indexes.push(
                   index
                 );
@@ -174,7 +148,7 @@ export default function PO() {
                   tempItems[index].unit
                 );
               } else {
-                // write the code here
+                
                 arrayOfDescriptionandSpecifications.push(
                   tempItems[index].specification
                 );
@@ -190,9 +164,6 @@ export default function PO() {
             }
           }
 
-          // console.log('after desc filter', tempObjFreqDesc);
-
-          // let tempRatesCheck = {};
           let tempFinalFiltered = [];
 
           for (
@@ -200,9 +171,6 @@ export default function PO() {
             objectIndex < Object.keys(tempObjFreqDesc).length;
             objectIndex++
           ) {
-            // console.log("teeeeee", tempRatesCheck);
-            // console.log(Object.keys(tempObjFreqDesc)[objectIndex]);
-
             let tempRate = [];
             let rateCount = {};
             for (
@@ -213,7 +181,7 @@ export default function PO() {
               ].length;
               rIndex++
             ) {
-              // write the code here
+              
               if (
                 tempRate.includes(
                   `R${+tempObjFreqDesc[
@@ -221,8 +189,7 @@ export default function PO() {
                   ]["rate"][rIndex]}`
                 )
               ) {
-                // write the code here
-                // console.log('already included pushing the indexes to array','tempRate',tempRate,'rateCount[tempObjFreqDesc[Object.keys(tempObjFreqDesc)[objectIndex]][\'rate\'][rIndex]][tempObjFreqDesc[Object.keys(tempObjFreqDesc)[objectIndex]][\'indexes\'][rIndex].unit]',rateCount[tempObjFreqDesc[Object.keys(tempObjFreqDesc)[objectIndex]]['rate'][rIndex]][[tempItems[tempObjFreqDesc[Object.keys(tempObjFreqDesc)[objectIndex]]['indexes'][rIndex]].unit]])
+                
                 if (
                   rateCount[
                     `R${
@@ -277,7 +244,7 @@ export default function PO() {
                   ];
                 }
               } else {
-                // write the code here
+                
                 tempRate.push(
                   `R${
                     tempObjFreqDesc[Object.keys(tempObjFreqDesc)[objectIndex]][
@@ -438,7 +405,7 @@ export default function PO() {
           }
         }
       }
-      console.log("Image URLs fetched successfully:", itemImageURLs); // Log itemImageURLs
+      console.log("Image URLs fetched successfully:", itemImageURLs); 
       setImageStates(itemImageURLs);
     } catch (error) {
       console.log("Error retrieving image URLs:", error);
@@ -473,21 +440,21 @@ export default function PO() {
   const checkMilestonesToBeEqaul = (obj1, obj2) => {
     let tempComp = true;
     if (obj1.length === obj2.length) {
-      // write the code here
+      
       for (let key = 0; key < obj1.length; key++) {
-        // write the code here
+        
         if (
           obj1[key].name === obj2[key].name &&
           obj1[key].percentage === obj2[key].percentage
         ) {
-          // write the code here
+          
         } else {
-          // write teh code here
+          
           tempComp = false;
         }
       }
     } else {
-      // write teh code here
+      
       tempComp = false;
     }
     return tempComp;
