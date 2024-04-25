@@ -1022,9 +1022,9 @@ const POItem = ({
               {console.log("heeloo po amtx")}
               <p style={{ fontWeight: "bold" }}>
                 Payment Details (Total Amount: {"\u20B9"}{" "}
-                {lastObjectState?.totalAmount}, Total Requested Amount:{" "}
-                {"\u20B9"} {lastObjectState?.requestedAmount}, Total Paid
-                Amount: {"\u20B9"} {lastObjectState?.paidAmount})
+                {item.totalAmount}, Total Requested Amount:{" "}
+                {"\u20B9"} {lastObjectState?.requestedAmount || 0}, Total Paid
+                Amount: {"\u20B9"} {lastObjectState?.paidAmount || 0})
               </p>
 
               {window.innerWidth > 600 ? (
