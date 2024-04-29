@@ -1086,7 +1086,7 @@ const POItem = ({
                                   : item.status === "Bill Declined"
                                   ? "red"
                                   : item.status === "Bill Raised"
-                                  ? "orange"
+                                      ? "rgb(255,77,2)"
                                   : item.status === "Bill On hold"
                                   ? "yellow"
                                   : item.status === "Bill Paid"
@@ -1104,9 +1104,9 @@ const POItem = ({
            <div
     style={{ fontSize: "13px", width: "100%", marginTop: "30px" }}
   >
-    {poReqMilestone.length === 0 ? null : (
+  
       <ul style={{ listStyleType: "none", padding: 0 }}>
-        {poReqMilestone.map((item, index) => (
+        {poReqMilestone && poReqMilestone.map((item, index) => (
           <li
             key={index}
             style={{
@@ -1155,7 +1155,7 @@ const POItem = ({
           </li>
         ))}
       </ul>
-    )}
+ 
                   </div>
                   
               )}
