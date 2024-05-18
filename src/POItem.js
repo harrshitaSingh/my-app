@@ -12,8 +12,6 @@ import SignaturePad from "react-signature-canvas";
 import { MdClear } from "react-icons/md";
 import { toast } from "react-toast";
 import config from "../src/config/config";
-import OpportunityService from "../src/services/opportunityService";
-import POService from "../src/services/poService";
 
 const POItem = ({
   item,

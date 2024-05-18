@@ -67,24 +67,26 @@ export default function PO() {
           let tempResPayload = JSON.parse(res.payload[0].discription);
           let tempMilestonesArray = [];
 
+          console.log("this is the length", tempResPayload.length)
+
           for (let value = 0; value < tempResPayload.length; value++) {
             
             tempMilestonesArray.push(tempResPayload[value].milestones);
           }
-          let commonMiestones = findMilestonesFromDraft(tempMilestonesArray);
-          let tempIndexes = [];
-          for (let value = 0; value < tempResPayload.length; value++) {
+          // let commonMiestones = findMilestonesFromDraft(tempMilestonesArray);
+          // let tempIndexes = [];
+          // for (let value = 0; value < tempResPayload.length; value++) {
             
-            if (
-              checkMilestonesToBeEqaul(
-                commonMiestones,
-                tempResPayload[value].milestones
-              )
-            ) {
-            } else {
-              tempIndexes.push(value);
-            }
-          }
+          //   if (
+          //     checkMilestonesToBeEqaul(
+          //       commonMiestones,
+          //       tempResPayload[value].milestones
+          //     )
+          //   ) {
+          //   } else {
+          //     tempIndexes.push(value);
+          //   }
+          // }
 
           let tempItems = JSON.parse(res.payload[0].discription);
           let tempObjFreqDesc = {};
@@ -342,7 +344,7 @@ export default function PO() {
             }
           }
 
-          setMilestoneTobeAddedIndex(tempIndexes);
+          // setMilestoneTobeAddedIndex(tempIndexes);
           res.payload[0].discription = JSON.stringify(tempFinalFiltered);
           setPoData(res.payload);
 
@@ -439,25 +441,27 @@ export default function PO() {
 
   const checkMilestonesToBeEqaul = (obj1, obj2) => {
     let tempComp = true;
-    if (obj1.length === obj2.length) {
+    console.log(obj1, "objexty", obj2)
+    // if (obj1.length === obj2.length) {
       
-      for (let key = 0; key < obj1.length; key++) {
+      
+    //   for (let key = 0; key < obj1.length; key++) {
         
-        if (
-          obj1[key].name === obj2[key].name &&
-          obj1[key].percentage === obj2[key].percentage
-        ) {
+    //     if (
+    //       obj1[key].name === obj2[key].name &&
+    //       obj1[key].percentage === obj2[key].percentage
+    //     ) {
           
-        } else {
+    //     } else {
           
-          tempComp = false;
-        }
-      }
-    } else {
+    //       tempComp = false;
+    //     }
+    //   }
+    // } else {
       
-      tempComp = false;
-    }
-    return tempComp;
+    //   tempComp = false;
+    // }
+    return true;
   };
 
   const findMilestonesFromDraft = (array) => {
