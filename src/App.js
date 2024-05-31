@@ -439,30 +439,55 @@ export default function PO() {
     }
   };
 
+  // const checkMilestonesToBeEqaul = (obj1, obj2) => {
+  //   let tempComp = true;
+  //   console.log(obj1, "objexty", obj2)
+  //   if (obj1.length === obj2.length) {
+  //     for (let key = 0; key < obj1.length; key++) {
+  //       if (
+  //         obj1[key].name === obj2[key].name &&
+  //         obj1[key].percentage === obj2[key].percentage
+  //       ) {
+          
+  //       } else {
+          
+  //         tempComp = false;
+  //       }
+  //     }
+  //   } else {
+      
+  //     tempComp = false;
+  //   }
+  //   return true;
+  // };
+
   const checkMilestonesToBeEqaul = (obj1, obj2) => {
-    let tempComp = true;
-    console.log(obj1, "objexty", obj2)
-    if (obj1.length === obj2.length) {
-      
-      
-      for (let key = 0; key < obj1.length; key++) {
-        
-        if (
-          obj1[key].name === obj2[key].name &&
-          obj1[key].percentage === obj2[key].percentage
-        ) {
-          
-        } else {
-          
-          tempComp = false;
-        }
-      }
-    } else {
-      
-      tempComp = false;
+    // If either obj1 or obj2 is undefined or not an array, return false
+    if (!Array.isArray(obj1) || !Array.isArray(obj2)) {
+      return false;
     }
-    return true;
+
+    let tempComp = true;
+    console.log(obj1, "object1", obj2, "object2");
+
+    // Create a combined set of unique names from both objects
+    const allKeys = new Set([...obj1.map(item => item.name), ...obj2.map(item => item.name)]);
+
+    // Iterate over each unique name and check corresponding percentage values in both objects
+    allKeys.forEach(key => {
+      const obj1Item = obj1.find(item => item.name === key);
+      const obj2Item = obj2.find(item => item.name === key);
+
+      // If one of the items is undefined or their percentages don't match, set tempComp to false
+      if (!obj1Item || !obj2Item || obj1Item.percentage !== obj2Item.percentage) {
+        tempComp = false;
+      }
+    });
+
+    return tempComp;
   };
+
+
 
   const findMilestonesFromDraft = (array) => {
     if (array.length === 0) return null;
