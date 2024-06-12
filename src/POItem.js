@@ -19,10 +19,12 @@ const POItem = ({
   imageStates,
   poReqMilestone,
   lastObjectState,
+  fromFinanceRequestAdmin
 }) => {
   console.log("po milestaone", poReqMilestone);
 
   console.log("i am last", lastObjectState);
+
 
 
   useEffect(() => {
@@ -151,18 +153,15 @@ const POItem = ({
             <div className="heading-container">
               <p className="header">
                 {"type" in JSON.parse(item.discription)[0]
-                  ? `${
-                      olderverions?.length > 0 ? "Amended" : ""
-                    }  Purchase Order ${
-                      olderverions?.length > 0
-                        ? `(${olderverions?.length + 1})`
-                        : ""
-                    }`
-                  : `${olderverions?.length > 0 ? "Amended" : ""} Work Order ${
-                      olderverions?.length > 0
-                        ? `(${olderverions?.length + 1})`
-                        : ""
-                    }`}
+                  ? `${olderverions?.length > 0 ? "Amended" : ""
+                  }  Purchase Order ${olderverions?.length > 0
+                    ? `(${olderverions?.length + 1})`
+                    : ""
+                  }`
+                  : `${olderverions?.length > 0 ? "Amended" : ""} Work Order ${olderverions?.length > 0
+                    ? `(${olderverions?.length + 1})`
+                    : ""
+                  }`}
               </p>
               <img src={item.firmLogoURL} className="firmLogo" />
             </div>
@@ -254,9 +253,9 @@ const POItem = ({
                   </p>
                   <p>
                     {item.vendorMobile == null ||
-                    item.vendorMobile == "null" ||
-                    item.vendorMobile == "null : null" ||
-                    item.vendorMobile == "Open Vendor"
+                      item.vendorMobile == "null" ||
+                      item.vendorMobile == "null : null" ||
+                      item.vendorMobile == "Open Vendor"
                       ? "-"
                       : item.vendorMobile.split(":")[0].trim()}
                   </p>
@@ -273,12 +272,12 @@ const POItem = ({
                   <p style={{ fontWeight: "bold" }}>Mobile Number:&nbsp; </p>
                   <p>
                     {item.vendorMobile == null ||
-                    item.vendorMobile == "null" ||
-                    item.vendorMobile == "null : null" ||
-                    item.vendorMobile == "Open Vendor"
+                      item.vendorMobile == "null" ||
+                      item.vendorMobile == "null : null" ||
+                      item.vendorMobile == "Open Vendor"
                       ? "-"
                       : item.vendorMobile &&
-                        item.vendorMobile.split(":")[1].trim()}
+                      item.vendorMobile.split(":")[1].trim()}
                   </p>
                 </div>
                 <div className="details">
@@ -286,24 +285,24 @@ const POItem = ({
                   <p>
                     {item.vendorAddress == null || item.vendorAddress == "null"
                       ? //  ||
-                        // item.vendorMobile == "null : null" ||
-                        // item.vendorMobile == "Open Vendor"
-                        "-"
+                      // item.vendorMobile == "null : null" ||
+                      // item.vendorMobile == "Open Vendor"
+                      "-"
                       : item.vendorAddress
-                          .toString()
-                          .replace(/<new-line>/g, "\n")
-                          .replace(/[\\#, +;$~%.'":*?<>{}]/g, "\n")}{" "}
+                        .toString()
+                        .replace(/<new-line>/g, "\n")
+                        .replace(/[\\#, +;$~%.'":*?<>{}]/g, "\n")}{" "}
                     {item.vendorPinCode == null || item.vendorPinCode == "null"
                       ? //  ||
-                        // item.vendorMobile == "null : null" ||
-                        // item.vendorMobile == "Open Vendor"
-                        "-"
+                      // item.vendorMobile == "null : null" ||
+                      // item.vendorMobile == "Open Vendor"
+                      "-"
                       : item.vendorPinCode}{" "}
                     {item.vendorCity == null || item.vendorPinCode == "null"
                       ? //  ||
-                        // item.vendorMobile == "null : null" ||
-                        // item.vendorMobile == "Open Vendor"
-                        "-"
+                      // item.vendorMobile == "null : null" ||
+                      // item.vendorMobile == "Open Vendor"
+                      "-"
                       : item.vendorCity}{" "}
                     {item.vendorState}
                   </p>
@@ -312,9 +311,9 @@ const POItem = ({
                   <p style={{ fontWeight: "bold" }}>GSTIN: &nbsp; </p>
                   <p>
                     {item.vendorMobile == null ||
-                    item.vendorMobile == "null" ||
-                    item.vendorMobile == "null : null" ||
-                    item.vendorMobile == "Open Vendor"
+                      item.vendorMobile == "null" ||
+                      item.vendorMobile == "null : null" ||
+                      item.vendorMobile == "Open Vendor"
                       ? "-"
                       : item.vendorGSTIN}
                   </p>
@@ -386,8 +385,8 @@ const POItem = ({
                             key={index}
                           >
                             {"type" in item ||
-                            ("workType" in item &&
-                              item.workType == "Only Material") ? (
+                              ("workType" in item &&
+                                item.workType == "Only Material") ? (
                               <td>{item.type || item.category}</td>
                             ) : (
                               <td>{item.category || item.vendorCategory}</td>
@@ -435,9 +434,9 @@ const POItem = ({
                                           Number(
                                             (item.quantity * item.rate +
                                               item.quantity *
-                                                item.rate *
-                                                (item.gst / 100)) *
-                                              (mItem.percentage / 100)
+                                              item.rate *
+                                              (item.gst / 100)) *
+                                            (mItem.percentage / 100)
                                           ))
                                       }
                                     </div>
@@ -487,9 +486,9 @@ const POItem = ({
                                           Number(
                                             (item.quantity * item.rate +
                                               item.quantity *
-                                                item.rate *
-                                                (item.gst / 100)) *
-                                              (mItem.percentage / 100)
+                                              item.rate *
+                                              (item.gst / 100)) *
+                                            (mItem.percentage / 100)
                                           ))
                                       }
                                     </div>
@@ -552,23 +551,24 @@ const POItem = ({
                               {(
                                 item["quantity"] * item["rate"] +
                                 item["quantity"] *
-                                  item["rate"] *
-                                  (item["gst"] / 100)
+                                item["rate"] *
+                                (item["gst"] / 100)
                               ).toFixed(2)}
-                              {window.FromFinanceRequestAdmin &&
-                                item?.profitablilityOfComponent && (
+                              {console.log("item value is", item)}
+                              {fromFinanceRequestAdmin &&
+                                item?.profitabilityOfComponent && (
                                   <span
                                     style={{
                                       fontWeight: 600,
                                       color:
-                                        item?.profitablilityOfComponent
+                                        item?.profitabilityOfComponent
                                           ?.percentage > 0
                                           ? "red"
                                           : "green",
                                     }}
                                   >
                                     {`(${Math.abs(
-                                      item.profitablilityOfComponent.percentage
+                                      item.profitabilityOfComponent.percentage
                                     )}%)`}
                                   </span>
                                 )}
@@ -598,8 +598,8 @@ const POItem = ({
                             <div key={index} className="mobile-item">
                               <p style={{ fontWeight: "bold" }}>{sNo}.</p>
                               {"type" in item ||
-                              ("workType" in item &&
-                                item.workType == "Only Material") ? (
+                                ("workType" in item &&
+                                  item.workType == "Only Material") ? (
                                 <p style={{ fontWeight: "bold" }}>
                                   Category : {item.type || item.category}
                                 </p>
@@ -639,9 +639,9 @@ const POItem = ({
                                               Number(
                                                 (item.quantity * item.rate +
                                                   item.quantity *
-                                                    item.rate *
-                                                    (item.gst / 100)) *
-                                                  (mItem.percentage / 100)
+                                                  item.rate *
+                                                  (item.gst / 100)) *
+                                                (mItem.percentage / 100)
                                               ))
                                           }
                                         </div>
@@ -671,9 +671,9 @@ const POItem = ({
                                               Number(
                                                 (item.quantity * item.rate +
                                                   item.quantity *
-                                                    item.rate *
-                                                    (item.gst / 100)) *
-                                                  (mItem.percentage / 100)
+                                                  item.rate *
+                                                  (item.gst / 100)) *
+                                                (mItem.percentage / 100)
                                               ))
                                           }
                                         </div>
@@ -691,23 +691,25 @@ const POItem = ({
                                   {(
                                     item["quantity"] * item["rate"] +
                                     item["quantity"] *
-                                      item["rate"] *
-                                      (item["gst"] / 100)
+                                    item["rate"] *
+                                    (item["gst"] / 100)
                                   ).toFixed(2)}
-                                  {window.FromFinanceRequestAdmin &&
-                                    item?.profitablilityOfComponent && (
+                                  
+                                  {console.log("item value is", item)}
+                                  {fromFinanceRequestAdmin &&
+                                    item?.profitabilityOfComponent && (
                                       <span
                                         style={{
                                           fontWeight: 600,
                                           color:
-                                            item?.profitablilityOfComponent
+                                            item?.profitabilityOfComponent
                                               ?.percentage > 0
                                               ? "red"
                                               : "green",
                                         }}
                                       >
                                         {`(${Math.abs(
-                                          item.profitablilityOfComponent
+                                          item.profitabilityOfComponent
                                             .percentage
                                         )}%)`}
                                       </span>
@@ -756,75 +758,75 @@ const POItem = ({
 
                   {item?.CommonMilestones
                     ? JSON.parse(item.CommonMilestones).map((mItem, mIndex) => (
-                        <tr key={mIndex}>
-                          <td
-                            style={{
-                              fontSize: 12,
-                              width: "40%",
-                              textAlign: "center",
-                            }}
-                          >
-                            {mItem.name}
-                          </td>
-                          <td
-                            style={{
-                              fontSize: 12,
-                              width: "20%",
-                              textAlign: "center",
-                            }}
-                          >
-                            {mItem.percentage} %
-                          </td>
-                          <td
-                            style={{
-                              fontSize: 12,
-                              width: "30%",
-                              textAlign: "center",
-                            }}
-                          >
-                            {"\u20B9 "}
-                            {Number(mItem.totalAmount).toFixed(2)}
-                          </td>
-                        </tr>
-                      ))
+                      <tr key={mIndex}>
+                        <td
+                          style={{
+                            fontSize: 12,
+                            width: "40%",
+                            textAlign: "center",
+                          }}
+                        >
+                          {mItem.name}
+                        </td>
+                        <td
+                          style={{
+                            fontSize: 12,
+                            width: "20%",
+                            textAlign: "center",
+                          }}
+                        >
+                          {mItem.percentage} %
+                        </td>
+                        <td
+                          style={{
+                            fontSize: 12,
+                            width: "30%",
+                            textAlign: "center",
+                          }}
+                        >
+                          {"\u20B9 "}
+                          {Number(mItem.totalAmount).toFixed(2)}
+                        </td>
+                      </tr>
+                    ))
                     : item.discription &&
-                      JSON.parse(item.discription)[
-                        commonMilestonesIndex
-                      ].milestones.map((mItem, mIndex) => (
-                        <tr key={mIndex}>
-                          <td
-                            style={{
-                              fontSize: 12,
-                              width: "40%",
-                              textAlign: "center",
-                            }}
-                          >
-                            {mItem.name}
-                          </td>
-                          <td
-                            style={{
-                              fontSize: 12,
-                              width: "20%",
-                              textAlign: "center",
-                            }}
-                          >
-                            {mItem.percentage} %
-                          </td>
-                          <td
-                            style={{
-                              fontSize: 12,
-                              width: "30%",
-                              textAlign: "center",
-                            }}
-                          >
-                            {"\u20B9 "}
-                            {(
-                              item.totalAmount *
-                              (mItem.percentage / 100)
-                            ).toFixed(2)}
-                          </td>
-                        </tr>
-                      ))}
+                    JSON.parse(item.discription)[
+                      commonMilestonesIndex
+                    ].milestones.map((mItem, mIndex) => (
+                      <tr key={mIndex}>
+                        <td
+                          style={{
+                            fontSize: 12,
+                            width: "40%",
+                            textAlign: "center",
+                          }}
+                        >
+                          {mItem.name}
+                        </td>
+                        <td
+                          style={{
+                            fontSize: 12,
+                            width: "20%",
+                            textAlign: "center",
+                          }}
+                        >
+                          {mItem.percentage} %
+                        </td>
+                        <td
+                          style={{
+                            fontSize: 12,
+                            width: "30%",
+                            textAlign: "center",
+                          }}
+                        >
+                          {"\u20B9 "}
+                          {(
+                            item.totalAmount *
+                            (mItem.percentage / 100)
+                          ).toFixed(2)}
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             ) : (
@@ -847,52 +849,52 @@ const POItem = ({
 
                   {item?.CommonMilestones
                     ? JSON.parse(item.CommonMilestones).map((mItem, mIndex) => (
-                        <div
-                          key={mIndex}
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            padding: "5px 10px",
-                          }}
-                        >
-                          <div style={{ width: "40%", textAlign: "center" }}>
-                            {mItem.name}
-                          </div>
-                          <div style={{ width: "20%", textAlign: "center" }}>
-                            {mItem.percentage} %
-                          </div>
-                          <div style={{ width: "30%", textAlign: "right" }}>
-                            {"\u20B9 "} {Number(mItem.totalAmount).toFixed(2)}
-                          </div>
+                      <div
+                        key={mIndex}
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        <div style={{ width: "40%", textAlign: "center" }}>
+                          {mItem.name}
                         </div>
-                      ))
+                        <div style={{ width: "20%", textAlign: "center" }}>
+                          {mItem.percentage} %
+                        </div>
+                        <div style={{ width: "30%", textAlign: "right" }}>
+                          {"\u20B9 "} {Number(mItem.totalAmount).toFixed(2)}
+                        </div>
+                      </div>
+                    ))
                     : item.discription &&
-                      JSON.parse(item.discription)[
-                        commonMilestonesIndex
-                      ].milestones.map((mItem, mIndex) => (
-                        <div
-                          key={mIndex}
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            padding: "5px 10px",
-                          }}
-                        >
-                          <div style={{ width: "40%", textAlign: "center" }}>
-                            {mItem.name}
-                          </div>
-                          <div style={{ width: "20%", textAlign: "center" }}>
-                            {mItem.percentage} %
-                          </div>
-                          <div style={{ width: "30%", textAlign: "right" }}>
-                            {"\u20B9 "}{" "}
-                            {(
-                              item.totalAmount *
-                              (mItem.percentage / 100)
-                            ).toFixed(2)}
-                          </div>
+                    JSON.parse(item.discription)[
+                      commonMilestonesIndex
+                    ].milestones.map((mItem, mIndex) => (
+                      <div
+                        key={mIndex}
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        <div style={{ width: "40%", textAlign: "center" }}>
+                          {mItem.name}
                         </div>
-                      ))}
+                        <div style={{ width: "20%", textAlign: "center" }}>
+                          {mItem.percentage} %
+                        </div>
+                        <div style={{ width: "30%", textAlign: "right" }}>
+                          {"\u20B9 "}{" "}
+                          {(
+                            item.totalAmount *
+                            (mItem.percentage / 100)
+                          ).toFixed(2)}
+                        </div>
+                      </div>
+                    ))}
                 </div>
               </div>
             )}
@@ -1001,9 +1003,9 @@ const POItem = ({
                     <p style={{ fontWeight: "bold" }}>GSTIN: &nbsp; </p>
                     <p>
                       {item.vendorMobile == null ||
-                      item.vendorMobile == "null" ||
-                      item.vendorMobile == "null : null" ||
-                      item.vendorMobile == "Open Vendor"
+                        item.vendorMobile == "null" ||
+                        item.vendorMobile == "null : null" ||
+                        item.vendorMobile == "Open Vendor"
                         ? "-"
                         : item.vendorGSTIN}
                     </p>
@@ -1031,26 +1033,26 @@ const POItem = ({
                   style={{ fontSize: "13px", width: "100%", marginTop: "30px" }}
                 >
                   <tbody>
-              
-                      <tr>
-                        <th style={{ backgroundColor: "#fff6db" }}>
-                          Payment Milestones
-                        </th>
-                        <th style={{ backgroundColor: "#fff6db" }}>
-                          Total Amount
-                        </th>
-                        <th style={{ backgroundColor: "#fff6db" }}>
-                          Requested Amount
-                        </th>
-                        <th style={{ backgroundColor: "#fff6db" }}>
-                          Total Paid Amount
-                        </th>
-                        <th style={{ backgroundColor: "#fff6db" }}>
-                          UTR Details
-                        </th>
-                        <th style={{ backgroundColor: "#fff6db" }}>Status</th>
-                      </tr>
-      
+
+                    <tr>
+                      <th style={{ backgroundColor: "#fff6db" }}>
+                        Payment Milestones
+                      </th>
+                      <th style={{ backgroundColor: "#fff6db" }}>
+                        Total Amount
+                      </th>
+                      <th style={{ backgroundColor: "#fff6db" }}>
+                        Requested Amount
+                      </th>
+                      <th style={{ backgroundColor: "#fff6db" }}>
+                        Total Paid Amount
+                      </th>
+                      <th style={{ backgroundColor: "#fff6db" }}>
+                        UTR Details
+                      </th>
+                      <th style={{ backgroundColor: "#fff6db" }}>Status</th>
+                    </tr>
+
 
                     {poReqMilestone &&
                       poReqMilestone.map((item, index) => (
@@ -1082,14 +1084,14 @@ const POItem = ({
                                 item.status === "Bill Approved"
                                   ? "blue"
                                   : item.status === "Bill Declined"
-                                  ? "red"
-                                  : item.status === "Bill Raised"
+                                    ? "red"
+                                    : item.status === "Bill Raised"
                                       ? "rgb(255,77,2)"
-                                  : item.status === "Bill On hold"
-                                  ? "yellow"
-                                  : item.status === "Bill Paid"
-                                  ? "green"
-                                  : "inherit",
+                                      : item.status === "Bill On hold"
+                                        ? "yellow"
+                                        : item.status === "Bill Paid"
+                                          ? "green"
+                                          : "inherit",
                             }}
                           >
                             {item.status}
@@ -1099,63 +1101,63 @@ const POItem = ({
                   </tbody>
                 </table>
               ) : (
-           <div
-    style={{ fontSize: "13px", width: "100%", marginTop: "30px" }}
-  >
-  
-      <ul style={{ listStyleType: "none", padding: 0 }}>
-        {poReqMilestone && poReqMilestone.map((item, index) => (
-          <li
-            key={index}
-            style={{
-              borderBottom: "1px solid #ccc",
-              paddingTop: "10px",
-              paddingBottom: "10px",
-            }}
-          >
-            <div>
-              <strong>Payment Milestones:</strong> {item.paymentMilestoneName?.name}
-            </div>
-            <div>
-              <strong>Total Amount:</strong> {"\u20B9 "}
-              {item.paymentMilestoneName?.totalAmount}
-            </div>
-            <div>
-              <strong>Requested Amount:</strong> {"\u20B9 "}
-              {item.requestedAmount}
-            </div>
-            <div>
-              <strong>Total Paid Amount:</strong> {"\u20B9 "}
-              {item.totalPaidAmount}
-            </div>
-            <div>
-              <strong>UTR Details:</strong> {item.utrDetails}
-            </div>
-            <div
-              style={{
-                fontWeight: "bold",
-                color:
-                  item.status === "Bill Approved"
-                    ? "blue"
-                    : item.status === "Bill Declined"
-                    ? "red"
-                    : item.status === "Bill Raised"
-                    ? "orange"
-                    : item.status === "Bill On hold"
-                    ? "yellow"
-                    : item.status === "Bill Paid"
-                    ? "green"
-                    : "inherit",
-              }}
-            >
-              <strong>Status:</strong> {item.status}
-            </div>
-          </li>
-        ))}
-      </ul>
- 
-                  </div>
-                  
+                <div
+                  style={{ fontSize: "13px", width: "100%", marginTop: "30px" }}
+                >
+
+                  <ul style={{ listStyleType: "none", padding: 0 }}>
+                    {poReqMilestone && poReqMilestone.map((item, index) => (
+                      <li
+                        key={index}
+                        style={{
+                          borderBottom: "1px solid #ccc",
+                          paddingTop: "10px",
+                          paddingBottom: "10px",
+                        }}
+                      >
+                        <div>
+                          <strong>Payment Milestones:</strong> {item.paymentMilestoneName?.name}
+                        </div>
+                        <div>
+                          <strong>Total Amount:</strong> {"\u20B9 "}
+                          {item.paymentMilestoneName?.totalAmount}
+                        </div>
+                        <div>
+                          <strong>Requested Amount:</strong> {"\u20B9 "}
+                          {item.requestedAmount}
+                        </div>
+                        <div>
+                          <strong>Total Paid Amount:</strong> {"\u20B9 "}
+                          {item.totalPaidAmount}
+                        </div>
+                        <div>
+                          <strong>UTR Details:</strong> {item.utrDetails}
+                        </div>
+                        <div
+                          style={{
+                            fontWeight: "bold",
+                            color:
+                              item.status === "Bill Approved"
+                                ? "blue"
+                                : item.status === "Bill Declined"
+                                  ? "red"
+                                  : item.status === "Bill Raised"
+                                    ? "orange"
+                                    : item.status === "Bill On hold"
+                                      ? "yellow"
+                                      : item.status === "Bill Paid"
+                                        ? "green"
+                                        : "inherit",
+                          }}
+                        >
+                          <strong>Status:</strong> {item.status}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+
+                </div>
+
               )}
             </div>
 
@@ -1197,8 +1199,8 @@ const POItem = ({
                             key={index}
                           >
                             {"type" in item ||
-                            ("workType" in item &&
-                              item.workType == "Only Material") ? (
+                              ("workType" in item &&
+                                item.workType == "Only Material") ? (
                               <td>{item.type || item.category}</td>
                             ) : (
                               <td>{item.category || item.vendorCategory}</td>
@@ -1273,8 +1275,8 @@ const POItem = ({
                                             {(
                                               (item.quantity * item.rate +
                                                 item.quantity *
-                                                  item.rate *
-                                                  (item.gst / 100)) *
+                                                item.rate *
+                                                (item.gst / 100)) *
                                               (mItem.percentage / 100)
                                             ).toFixed(2)}
                                           </div>
@@ -1353,8 +1355,8 @@ const POItem = ({
                                             {(
                                               (item.quantity * item.rate +
                                                 item.quantity *
-                                                  item.rate *
-                                                  (item.gst / 100)) *
+                                                item.rate *
+                                                (item.gst / 100)) *
                                               (mItem.percentage / 100)
                                             ).toFixed(2)}
                                           </div>
@@ -1412,8 +1414,8 @@ const POItem = ({
                               {(
                                 item["quantity"] * item["rate"] +
                                 item["quantity"] *
-                                  item["rate"] *
-                                  (item["gst"] / 100)
+                                item["rate"] *
+                                (item["gst"] / 100)
                               ).toFixed(2)}
                             </td>
                           </tr>
@@ -1444,8 +1446,8 @@ const POItem = ({
                             <div className="mobile-item">
                               <p style={{ fontWeight: "bold" }}>{index + 1}.</p>
                               {"type" in item ||
-                              ("workType" in item &&
-                                item.workType == "Only Material") ? (
+                                ("workType" in item &&
+                                  item.workType == "Only Material") ? (
                                 <p style={{ fontWeight: "bold" }}>
                                   Category : {item.type || item.category}
                                 </p>
@@ -1498,9 +1500,9 @@ const POItem = ({
                                               Number(
                                                 (item.quantity * item.rate +
                                                   item.quantity *
-                                                    item.rate *
-                                                    (item.gst / 100)) *
-                                                  (mItem.percentage / 100)
+                                                  item.rate *
+                                                  (item.gst / 100)) *
+                                                (mItem.percentage / 100)
                                               ))
                                           }
                                         </div>
@@ -1518,8 +1520,8 @@ const POItem = ({
                                   {(
                                     item["quantity"] * item["rate"] +
                                     item["quantity"] *
-                                      item["rate"] *
-                                      (item["gst"] / 100)
+                                    item["rate"] *
+                                    (item["gst"] / 100)
                                   ).toFixed(2)}
                                 </p>
                               </div>
@@ -1708,8 +1710,8 @@ const POItem = ({
                                   Number(item["quantity"] * item["rate"]) +
                                   Number(
                                     item["quantity"] *
-                                      item["rate"] *
-                                      (item["gst"] / 100)
+                                    item["rate"] *
+                                    (item["gst"] / 100)
                                   )
                                 ).toFixed(2)
                               ),
@@ -1890,8 +1892,8 @@ const POItem = ({
             ) : (
               <div style={{ width: "100%" }}>
                 {item.priceBase.length != 0 &&
-                item.freight.length != 0 &&
-                item.insurance.length != 0 ? (
+                  item.freight.length != 0 &&
+                  item.insurance.length != 0 ? (
                   <div className="terms-condition">
                     {item.priceBase.length > 0 ? (
                       <div>

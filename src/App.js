@@ -25,6 +25,17 @@ export default function PO() {
 
   const pathname = getQueryParam("po_id");
 
+  const [fromFinanceRequestAdmin, setFromFinanceRequestAdmin] = useState(false);
+
+  useEffect(() => {
+    let finStatus = getQueryParam("finApproval")
+    if (finStatus) {
+      setFromFinanceRequestAdmin(true);
+    } else {
+      setFromFinanceRequestAdmin(false);
+    }
+  }, [])
+
   const [spinner, setSpinner] = useState(false);
   const [poData, setPoData] = useState([]);
   const [milestoneTobeAddedIndex, setMilestoneTobeAddedIndex] = useState([]);
@@ -532,6 +543,7 @@ export default function PO() {
             setPoData={setPoData}
             poReqMilestone={poReqMilestone}
             lastObjectState={lastObjectState}
+            fromFinanceRequestAdmin={fromFinanceRequestAdmin}
           />
         )
       ) : (
