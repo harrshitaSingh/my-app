@@ -1047,9 +1047,7 @@ const POItem = ({
                       <th style={{ backgroundColor: "#fff6db" }}>
                         Total Paid Amount
                       </th>
-                      <th style={{ backgroundColor: "#fff6db" }}>
-                        UTR Details
-                      </th>
+                
                       <th style={{ backgroundColor: "#fff6db" }}>Status</th>
                     </tr>
 
@@ -1072,9 +1070,7 @@ const POItem = ({
                             {"\u20B9 "}
                             {item.totalPaidAmount}
                           </td>
-                          <td style={{ fontSize: 12, textAlign: "center" }}>
-                            {item.utrDetails}
-                          </td>
+                     
                           <td
                             style={{
                               fontSize: 12,
@@ -1130,9 +1126,7 @@ const POItem = ({
                           <strong>Total Paid Amount:</strong> {"\u20B9 "}
                           {item.totalPaidAmount}
                         </div>
-                        <div>
-                          <strong>UTR Details:</strong> {item.utrDetails}
-                        </div>
+                
                         <div
                           style={{
                             fontWeight: "bold",
